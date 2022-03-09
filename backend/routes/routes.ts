@@ -8,6 +8,6 @@ const router = new Router();
 router
   .post("/user", addUser)
   .post("/device_add", addDevice)
-  .get("/users", getAllUsers)
+  .get("/user", getAllUsers)
 
 export default router;

@@ -1,10 +1,14 @@
 import { Client } from "https://deno.land/x/mysql/mod.ts";
+import { config } from "https://deno.land/x/dotenv/mod.ts";
 
 const mySqlClient = await new Client().connect({
-  hostname: "artigraf.hu",
-  username: "artigraf_ag243",
-  db: "artigraf_deno",
-  password: "artivgabor1965",
+  hostname: config().HOSTNAME,
+  username: config().USERNAME,
+  db: config().DB,
+  password: config().PASSWORD,
 });
+
+const users = await mySqlClient.execute('SELECT * FROM user');
+console.log(users.rows);
 
 export default mySqlClient;
