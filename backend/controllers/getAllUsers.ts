@@ -2,14 +2,7 @@ import mySqlClient from '../database/mysql.ts';
 import { search } from './userController.ts';
 
 export async function getAllUsers ({ response }: { response: any }) { 
-  
   let uid = 3;
   const result = await search(3);
   response.body = result.rows;
-  /*
- response.body = {
-   name: "Peter",
-   age: 25,
- }
- */
 }
