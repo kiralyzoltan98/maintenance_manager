@@ -7,7 +7,7 @@ export async function addUser ({ request, response }: { request: any; response: 
     const userInfo: UserInterface = body.value;
     let status = 200;
 
-    if (userInfo.hasOwnProperty('name') && userInfo.hasOwnProperty('password') && userInfo.hasOwnProperty('age') && userInfo.hasOwnProperty('gender')) {
+    if (userInfo.hasOwnProperty('userName') && userInfo.hasOwnProperty('password') && userInfo.hasOwnProperty('qualificationId') && userInfo.hasOwnProperty('type')) {
       response.body = await insert_user(userInfo);
     } else {
       response.body = { "error": "Invalid request!" };

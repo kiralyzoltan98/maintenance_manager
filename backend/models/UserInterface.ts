@@ -1,6 +1,6 @@
 export interface UserInterface {
-    name: string,
+    userName: string,
     password: string,
-    age: number,
-    gender: number
+    qualificationId: number,
+    type: string
 }

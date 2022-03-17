@@ -19,16 +19,16 @@ export const get_user = (ctx: Context) => {
 export async function search( params: number) { 
     const isSpecific = Object.keys(params).length !== 0;
     if (isSpecific) {
-        return await mySqlClient.execute(`SELECT * FROM user WHERE ID = ?`, [params]);
+        return await mySqlClient.execute(`SELECT * FROM User WHERE ID = ?`, [params]);
     } else {
-        return await mySqlClient.execute(`SELECT * FROM user`);   
+        return await mySqlClient.execute(`SELECT * FROM User`);   
     }
 }
 //TODO
 //Table names to lowercase!!!
-export const insert_user = async ({ name, password, age, gender }: { name: string; password: string, age: number, gender: number }) => {
-    return await mySqlClient.execute(`INSERT INTO USER(NAME, PASSWORD, AGE, GENDER) VALUES(?,?,?,?)`, [
-        name, password, age, gender
+export const insert_user = async ({ userName, password, qualificationId, type }: { userName: string; password: string, qualificationId: number, type: string }) => {
+    return await mySqlClient.execute(`INSERT INTO User(UserName, Password, QualificationId, Type) VALUES(?,?,?,?)`, [
+        userName, password, qualificationId, type
     ]);
 }
 

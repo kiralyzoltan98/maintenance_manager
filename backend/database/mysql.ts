@@ -8,7 +8,4 @@ const mySqlClient = await new Client().connect({
   password: config().PASSWORD,
 });
 
-const users = await mySqlClient.execute('SELECT * FROM user');
-console.log(users.rows);
-
 export default mySqlClient;
