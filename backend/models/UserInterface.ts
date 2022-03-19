@@ -1,5 +1,5 @@
 export interface UserInterface {
-    userId: number,
+    userId?: number,
     userName: string,
     password: string,
     qualificationId: number,

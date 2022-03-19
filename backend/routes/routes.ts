@@ -7,7 +7,7 @@ const router = new Router();
 
 router
   .post("/user", addUser)
-  .post("/device_add", addDevice)
+  .post("/device", addDevice)
   .get("/user", getAllUsers)
 
 export default router;

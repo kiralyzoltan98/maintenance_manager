@@ -19,7 +19,7 @@ export const get_user = (ctx: Context) => {
 export async function search( params: number) { 
     const isSpecific = Object.keys(params).length !== 0;
     if (isSpecific) {
-        return await mySqlClient.execute(`SELECT * FROM User WHERE ID = ?`, [params]);
+        return await mySqlClient.execute(`SELECT * FROM User`); //WHERE ID = ?`, [params]);
     } else {
         return await mySqlClient.execute(`SELECT * FROM User`);   
     }
@@ -32,9 +32,9 @@ export const insert_user = async ({ userName, password, qualificationId, type }:
     ]);
 }
 
-export const insert_device = async ({ category_id, name, location }: {category_id: number, name: string, location: string }) => {
-    return await mySqlClient.execute(`INSERT INTO DEVICE(CATEGORY_ID, NAME, LOCATION) VALUES(?,?,?)`, [
-        category_id, name, location
+export const insert_device = async ({ categoryId, deviceName, location }: {categoryId: number, deviceName: string, location: string }) => {
+    return await mySqlClient.execute(`INSERT INTO Device(CategoryId, DeviceName, Location) VALUES(?,?,?)`, [
+        categoryId, deviceName, location
     ]);
 }
 
