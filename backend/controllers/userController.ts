@@ -38,11 +38,18 @@ export const insert_device = async ({ category_id, name, location }: {category_i
     ]);
 }
 
-export const insert_category = async ({  name, description, intervall, normtime }: {name: string, description: string, intervall: number, normtime: number }) => {
+export const insert_main_category = async ({  name, description, intervall, normtime }: {name: string, description: string, intervall: number, normtime: number }) => {
     return await mySqlClient.execute(`INSERT INTO USER(NAME, DESCRIPTION, INTERVALL, NORMTIME) VALUES(?,?,?,?)`, [
         name, description, intervall, normtime
     ]);
 }
+
+export const insert_sub_category = async ({  name, description, intervall, normtime }: {name: string, description: string, intervall: number, normtime: number }) => {
+    return await mySqlClient.execute(`INSERT INTO USER(NAME, DESCRIPTION, INTERVALL, NORMTIME) VALUES(?,?,?,?)`, [
+        name, description, intervall, normtime
+    ]);
+}
+
 
 /* export const delete_user = async (ctx: Context) => {
     let result = await mySqlClient.execute(`delete from users where ?? = ?`, ["id", 1]);
