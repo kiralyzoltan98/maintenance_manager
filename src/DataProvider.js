@@ -1,24 +1,29 @@
-import { fetchUtils } from 'react-admin';
+import { fetchUtils, Admin, Resource } from 'react-admin';
+//import simpleRestProvider from 'ra-data-simple-rest';
 import { stringify } from 'query-string';
 
-const apiUrl = 'https://http://localhost:8000/';
-const httpClient = fetchUtils.fetchJson;
+const apiUrl = 'http://localhost:8000/';
+const httpClient =async  (url, options = {}) => {
+    if (!options.headers) {
+        options.headers = new Headers({ Accept: 'application/json' });
+    }
+    //const { token } = JSON.parse(localStorage.getItem('auth'));
+    // options.headers.set('Content-Type', `application/x-www-form-urlencoded`);
+    options.headers.set("Access-Control-Allow-Origin", "*/*");
+    // options.headers.set("Accept", "/");
+    return fetchUtils.fetchJson(url, options);
+};
 
 export default {
-    getList: (resource, params) => {
-        const { page, perPage } = params.pagination;
-        const { field, order } = params.sort;
-        const query = {
-            sort: JSON.stringify([field, order]),
-            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-            filter: JSON.stringify(params.filter),
-        };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
-
-        return httpClient(url).then(({ headers, json }) => ({
-            data: json,
-            total: parseInt(headers.get('content-range').split('/').pop(), 10),
-        }));
+    getList: () => {
+        // const url = `${apiUrl}user`;
+        // return httpClient(url).then(({ headers, json }) => ({
+        //     data: json,
+        //     header: headers
+        // }));
+        fetch('http://localhost:8000/user')
+            .then(response => response.json())
+            .then(data => this.setState({ UserId: data.UserId }));
     },
 
     getOne: (resource, params) =>
