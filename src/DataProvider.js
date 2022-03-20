@@ -1,29 +1,31 @@
 import { fetchUtils, Admin, Resource } from 'react-admin';
 //import simpleRestProvider from 'ra-data-simple-rest';
 import { stringify } from 'query-string';
+import {useState} from "react";
 
-const apiUrl = 'http://localhost:8000/';
+
+const apiUrl = `http://localhost:8000/user`;
 const httpClient =async  (url, options = {}) => {
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
     }
-    //const { token } = JSON.parse(localStorage.getItem('auth'));
-    // options.headers.set('Content-Type', `application/x-www-form-urlencoded`);
-    options.headers.set("Access-Control-Allow-Origin", "*/*");
-    // options.headers.set("Accept", "/");
+
+    //options.headers.set("Access-Control-Allow-Origin", "http://127.0.0.1:8000");
     return fetchUtils.fetchJson(url, options);
 };
 
 export default {
+
     getList: () => {
-        // const url = `${apiUrl}user`;
-        // return httpClient(url).then(({ headers, json }) => ({
-        //     data: json,
-        //     header: headers
-        // }));
-        fetch('http://localhost:8000/user')
-            .then(response => response.json())
-            .then(data => this.setState({ UserId: data.UserId }));
+        try{
+            fetch(apiUrl)
+                .then((res) => res.json())
+                .then((repos) => {
+                    console.log(repos);
+                });
+        }catch(err){
+            console.log(err);
+        }
     },
 
     getOne: (resource, params) =>
