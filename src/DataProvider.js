@@ -4,7 +4,7 @@ import { stringify } from 'query-string';
 import {useState} from "react";
 
 
-const apiUrl = `http://localhost:8000/user`;
+const apiUrl = `http://localhost:8000/users`;
 const httpClient =async  (url, options = {}) => {
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
