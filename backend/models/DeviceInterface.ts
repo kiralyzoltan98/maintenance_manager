@@ -1,5 +1,5 @@
 export interface DeviceInterface {
-    deviceId: number,
+    deviceId?: number,
     categoryId: number,
     deviceName: string,
     location: string,
