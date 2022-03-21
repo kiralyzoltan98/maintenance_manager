@@ -13,7 +13,9 @@ export async function addUser ({ request, response }: { request: any; response: 
       type: body.get('type')
     }
 
-    if (userInfo.hasOwnProperty('userName') && userInfo.hasOwnProperty('password') && userInfo.hasOwnProperty('qualificationId') && userInfo.hasOwnProperty('type')) {
+    const hasValues = await (userInfo.userName.length != 0 && userInfo.password.length != 0 && userInfo.qualificationId.toString().length != 0 && userInfo.type.length != 0 );
+
+    if (hasValues) {
       status = 200;
       response.body = await insert_user(userInfo);
     } else {
