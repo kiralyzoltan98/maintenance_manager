@@ -8,5 +8,5 @@
 1. Start frontend (`npm start`)
 
 ## Database
-Edit database: [link to admin page](`https://mysqladmin-pub.nethely.hu`)
+Edit database: [link to admin page](https://mysqladmin-pub.nethely.hu)
 User and pass in the env file
