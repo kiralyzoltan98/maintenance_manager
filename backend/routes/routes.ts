@@ -10,7 +10,7 @@ const router = new Router();
 router
 .post("/user", addUser)
 .post("/device", addDevice)
+.post("/login", login)
 .get("/users", getAllUsers)
-.get("/login", login)
 
 export default router;
