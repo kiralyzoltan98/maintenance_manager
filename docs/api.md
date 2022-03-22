@@ -34,3 +34,11 @@
 ** response **
  - OK
  - Invalid request!
+
+ ## /login
+ ** params **
+  - userName, password
+
+** response **
+ - { user }
+ - Invalid username or password!
