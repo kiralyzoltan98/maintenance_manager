@@ -1,9 +1,8 @@
 # GET 
 
-## /user
+## /users
 - returns all users
-
-** response **
+**response**
 `
 [
   {
@@ -20,25 +19,25 @@
 # POST
 
 ## /user
-** params **
+**params**
 - userName, password, qualificationId, type
 
-** response **
+**response**
  - OK
  - Invalid request!
 
 ## /device
-** params **
+**params**
  - categoryId, deviceName, location
 
-** response **
+**response**
  - OK
  - Invalid request!
 
  ## /login
- ** params **
+ **params**
   - userName, password
 
-** response **
+**response**
  - { user }
  - Invalid username or password!
