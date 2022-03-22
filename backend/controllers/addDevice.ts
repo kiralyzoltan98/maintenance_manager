@@ -1,5 +1,5 @@
 import mySqlClient from '../database/mysql.ts';
-import { insert_device } from './userController.ts';
+import { insert_device } from './queryController.ts';
 import { DeviceInterface } from '../models/DeviceInterface.ts';
 
 export async function addDevice ({ request, response }: { request: any; response: any }) {
