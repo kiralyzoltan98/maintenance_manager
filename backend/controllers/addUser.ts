@@ -1,5 +1,5 @@
 import mySqlClient from '../database/mysql.ts';
-import { insert_user } from './userController.ts';
+import { insert_user } from './queryController.ts';
 import { UserInterface } from '../models/UserInterface.ts';
 
 export async function addUser ({ request, response }: { request: any; response: any }) {

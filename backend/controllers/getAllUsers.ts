@@ -1,5 +1,5 @@
 import mySqlClient from '../database/mysql.ts';
-import { search } from './userController.ts';
+import { search } from './queryController.ts';
 
 export async function getAllUsers ({ response }: { response: any }) { 
   let uid = 3;
