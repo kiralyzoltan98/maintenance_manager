@@ -1,4 +1,4 @@
-import { search } from './userController.ts';
+import { search } from './queryController.ts';
 import { UserInterface} from '../models/UserInterface.ts'
 
 export async function login({ request, response }: { request: any; response: any }) {
