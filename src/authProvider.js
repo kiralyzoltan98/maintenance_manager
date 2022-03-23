@@ -10,20 +10,27 @@ export default {
 
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            mode: 'cors',
             body: JSON.stringify({ userName: username, password: password })
         };
 
+        /*let response;
+
+        httpClient(url, requestOptions)
+            .then(response => response.json())
+            .then(data => localStorage.setItem('username', response.username, 'qualification', response.qualification))*/
+
         async function checkLogin() {
             const request = await httpClient(url, requestOptions);
-            const data = request.json;
+            const data = await request.body;
             return data;
         }
 
-        const response = checkLogin();
+        const response = checkLogin().then;
         console.log(response);
 
         localStorage.setItem('username', response.username, 'qualification', response.qualification);
+        
         //Accept all username/password combination
         return Promise.resolve();
     },

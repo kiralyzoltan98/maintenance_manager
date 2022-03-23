@@ -7,7 +7,6 @@ app.use(
     oakCors({
       origin: /^.+localhost:(3000|8000)$/,
       optionsSuccessStatus: 200,
-      exposedHeaders: ['Content-Range', 'X-Content-Range'],
     }),
 );
 app.use(router.routes());

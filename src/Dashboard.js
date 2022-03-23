@@ -8,4 +8,3 @@ export default () => (
       <CardContent>Lorem Ipsum random szöveg...</CardContent>
   </Card>
 );
-
