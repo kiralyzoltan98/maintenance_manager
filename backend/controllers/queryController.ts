@@ -38,6 +38,13 @@ export const insert_device = async ({ categoryId, deviceName, location }: {categ
     ]);
 }
 
+export const insert_qualification = async ({ qualification, qualificationDescription }: { qualification: string, qualificationDescription: string }) => {
+    return await mySqlClient.execute(`INSERT INTO Qualification(Qualification, QualificationDescription) VALUES(?,?)`, [
+        qualification, qualificationDescription
+    ]);
+}
+
+
 export const insert_main_category = async ({  name, description, intervall, normtime }: {name: string, description: string, intervall: number, normtime: number }) => {
     return await mySqlClient.execute(`INSERT INTO USER(NAME, DESCRIPTION, INTERVALL, NORMTIME) VALUES(?,?,?,?)`, [
         name, description, intervall, normtime
