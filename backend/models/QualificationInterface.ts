@@ -1,5 +1,5 @@
 export interface QualificationInterface{
-    qualificationId: number,
+    qualificationId?: number,
     qualification: string,
     qualificationDescription: string
 }
