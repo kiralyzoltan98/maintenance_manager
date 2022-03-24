@@ -4,33 +4,26 @@ const httpClient = fetchUtils.fetchJson;
 
 export default {
     //Called when the user tries to log in
-    login: ({username, password}) => {
+    login: async ({username, password}) => {
         const url = "http://localhost:8000/login";
-        let qualification;
-
-        const requestOptions = {
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify({ userName: username, password: password })
-        };
-
-        /*let response;
-
-        httpClient(url, requestOptions)
-            .then(response => response.json())
-            .then(data => localStorage.setItem('username', response.username, 'qualification', response.qualification))*/
 
         async function checkLogin() {
-            const request = await httpClient(url, requestOptions);
-            const data = await request.body;
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({userName: username, password: password})
+            };
+
+            const request = await fetch(url, requestOptions);
+            const data = request.json();
             return data;
         }
 
-        const response = checkLogin().then;
+        const response = checkLogin().then();
         console.log(response);
 
         localStorage.setItem('username', response.username, 'qualification', response.qualification);
-        
+
         //Accept all username/password combination
         return Promise.resolve();
     },
