@@ -12,7 +12,7 @@ export async function login({ request, response }: { request: any; response: any
       }
 
     const userName = body.userName;
-    const password = body.userName;
+    const password = body.password;
     const getUsers = await search(1);
     let users = getUsers.rows;
 
