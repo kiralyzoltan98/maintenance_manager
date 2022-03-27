@@ -16,19 +16,16 @@ export default {
             },
                 body: JSON.stringify({userName: username, password: password})
             };
-
-            console.log({requestOptions});
-
             const request = await fetch(url, requestOptions);
-            console.log({request})
             const data = request.json();
             return data;
         }
 
-        const response = checkLogin().then();
-        console.log(response);
+        const response = await checkLogin().then();
+        console.log(response.loggedInUser);
+        const user = response.loggedInUser;
 
-        localStorage.setItem('username', response.username, 'qualification', response.qualification);
+        localStorage.setItem('username', user.UserName, 'qualification', user.QualificationId);
 
         //Accept all username/password combination
         return Promise.resolve();
