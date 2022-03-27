@@ -4,11 +4,15 @@ import { UserInterface} from '../models/UserInterface.ts'
 export async function login({ request, response }: { request: any; response: any }) {
     const body = await request.body().value;
     let status = 400;
+    console.log(body);
+    if (!request.hasBody) {
+        response.status = status;
+        response.body = { message: "No data provided" };
+        return;
+      }
 
     const userName = body.userName;
     const password = body.userName;
-    
-    console.log({body});
     const getUsers = await search(1);
     let users = getUsers.rows;
 
