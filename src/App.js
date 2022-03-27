@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Admin, Resource } from 'react-admin';
 import {PostCreate, PostList, PostEdit} from './posts';
-import { UserList } from './users';
+import { UserList, UserCreate } from './users';
 import jsonServerProvider from 'ra-data-json-server';
 import Dashboard from "./Dashboard";
 import authProvider from "./authProvider";
@@ -15,7 +15,7 @@ import DataProvider from "./DataProvider";
 const App = () => (
     <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={DataProvider} >
         <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/>
-        <Resource name="users" list={UserList} icon={UserIcon}/>
+        <Resource name="users" list={UserList} create={UserCreate} icon={UserIcon}/>
     </Admin>
 );
 

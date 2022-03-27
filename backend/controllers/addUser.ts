@@ -7,10 +7,10 @@ export async function addUser ({ request, response }: { request: any; response: 
     let status = 400;
 
     const userInfo:UserInterface = {
-      userName: body.get('userName'),
-      password: body.get('password'),
-      qualificationId: body.get('qualificationId'),
-      type: body.get('type')
+      userName: body.userName,
+      password: body.password,
+      qualificationId: body.qualificationId,
+      type: body.type,
     }
 
     const hasValues = await (userInfo.userName.length != 0 && userInfo.password.length != 0 && userInfo.qualificationId.toString().length != 0 && userInfo.type.length != 0 );
