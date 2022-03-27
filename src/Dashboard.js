@@ -14,7 +14,7 @@ export default () => (
           You can schedule device <strong>maintenance</strong> 
         </li>
         <li>
-          We can see the operated devices and vehicles  
+          We can see the operated devices
         </li>
       </ul>
   </Card>

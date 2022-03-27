@@ -29,7 +29,6 @@ export const UserList = props => (
 export const UserCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="id" />
             <TextInput source="UserName" />
             <TextInput source="Password" />
             <TextInput multiline source="QualificationId" />
