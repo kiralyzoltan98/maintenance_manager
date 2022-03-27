@@ -10,9 +10,15 @@ export default {
         async function checkLogin() {
             const requestOptions = {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                mode: 'cors',
+                headers: {
+                    'Content-Type' : 'application/json',
+
+            },
                 body: JSON.stringify({userName: username, password: password})
             };
+
+            console.log({requestOptions});
 
             const request = await fetch(url, requestOptions);
             const data = request.json();

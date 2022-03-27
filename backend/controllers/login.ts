@@ -5,9 +5,10 @@ export async function login({ request, response }: { request: any; response: any
     const body = await request.body().value;
     let status = 400;
 
-    const userName = body.get('userName');
-    const password = body.get('password');
-
+    const userName = body.userName;
+    const password = body.userName;
+    
+    console.log({body});
     const getUsers = await search(1);
     let users = getUsers.rows;
 
