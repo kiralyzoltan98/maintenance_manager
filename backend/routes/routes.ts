@@ -7,7 +7,7 @@ import { login } from '../controllers/login.ts';
 import { addQualification } from '../controllers/addQualification.ts';
 
 const router = new Router();
-
+const szaft = "";
 router
 .post("/user", addUser)
 .post("/device", addDevice)

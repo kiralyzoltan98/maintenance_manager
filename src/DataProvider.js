@@ -11,6 +11,7 @@ const httpClient = fetchUtils.fetchJson;
 export default {
 
     getList: (resource, params) => {
+        console.log("PARAMS: LIST :: ", params);
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
@@ -102,13 +103,34 @@ export default {
         }).then(({ json }) => ({ data: json }));
     },
 
-    create: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}`, {
-            method: 'POST',
-            body: JSON.stringify(params.data),
-        }).then(({ json }) => ({
-            data: { ...params.data, id: json.id },
-        })),
+    create: async (resource, params) => {
+        const url = `http://localhost:8000/user`;
+        console.log("create params: ", params);
+        console.log("create params: ", params.data.UserName);
+        params = params.data;
+
+        async function checkLogin() {
+            const requestOptions = {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type' : 'application/json',
+                },
+                //userName, password, qualificationId, type
+                body: JSON.stringify({userName: params.UserName, password: params.Password,
+                                            qualificationId: params.QualificationId, type: params.Type})
+            };
+            const request = await fetch(url, requestOptions);
+            const data = request.json();
+            return data;
+        }
+
+        const response = await checkLogin().then();
+        console.log(response.loggedInUser);
+    },
+
+
+
 
     delete: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`, {

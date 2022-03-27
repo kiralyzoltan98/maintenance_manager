@@ -32,6 +32,7 @@ export const UserCreate = props => (
             <TextInput source="UserName" />
             <TextInput source="Password" />
             <TextInput multiline source="QualificationId" />
+            <TextInput source="Type" />
         </SimpleForm>
     </Create>
 );
