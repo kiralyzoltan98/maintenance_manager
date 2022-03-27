@@ -1,7 +1,7 @@
 
 import * as React from "react-admin"
 import { Card, CardContent, CardHeader } from '@material-ui/core';
-import Posting from './testPost'
+import Posting from './postTest'
 
 export default () => (
   <Card>
