@@ -9,11 +9,10 @@ import { addQualification } from '../controllers/addQualification.ts';
 const router = new Router();
 const szaft = "";
 router
-.post("/user", addUser)
-.post("/device", addDevice)
-.options("/login", oakCors())
-.post("/login", login)
-.post("/qualification", addQualification)
-.get("/users", getAllUsers)
+    .post("/user", addUser)
+    .post("/device", addDevice)
+    .post("/login", login)
+    .post("/qualification", addQualification)
+    .get("/users", getAllUsers)
 
 export default router;
