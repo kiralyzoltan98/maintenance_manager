@@ -13,7 +13,6 @@ export default {
                 mode: 'cors',
                 headers: {
                     'Content-Type' : 'application/json',
-
             },
                 body: JSON.stringify({userName: username, password: password})
             };
@@ -21,6 +20,7 @@ export default {
             console.log({requestOptions});
 
             const request = await fetch(url, requestOptions);
+            console.log({request})
             const data = request.json();
             return data;
         }
