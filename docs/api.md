@@ -29,7 +29,7 @@
 `
 
 ## /device-categories
-- returns all users
+- returns all device categories
 **response**
 `
 [
@@ -41,7 +41,7 @@
 
 ## /task
 - get task by userId
-**params**
+**URL params**
 - userId : number
 
 **response**
@@ -52,6 +52,18 @@
   },
   ...
 `
+
+## /categories
+
+**response**
+`
+[
+  {
+    Category
+  },
+  ...
+`
+
 
 
 # POST
