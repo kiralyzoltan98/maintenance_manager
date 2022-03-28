@@ -6,6 +6,7 @@ import { addDevice } from '../controllers/addDevice.ts';
 import { addUser } from '../controllers/addUser.ts';
 import { login } from '../controllers/login.ts';
 import { addQualification } from '../controllers/addQualification.ts';
+import { addDeviceCategory } from '../controllers/addDeviceCategory.ts';
 
 const router = new Router();
 const szaft = "";
@@ -15,6 +16,7 @@ router
     //.post("/devices", getAllDevices) //TODO
     .post("/login", login)
     .post("/qualification", addQualification)
+    .post("/devicecategory", addDeviceCategory)
     .get("/devices", getAllDevice)
     .get("/users", getAllUsers)
 

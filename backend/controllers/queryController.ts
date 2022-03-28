@@ -50,15 +50,21 @@ export const insert_qualification = async ({ qualification, qualificationDescrip
 }
 
 
-export const insert_main_category = async ({  name, description, intervall, normtime }: {name: string, description: string, intervall: number, normtime: number }) => {
-    return await mySqlClient.execute(`INSERT INTO USER(NAME, DESCRIPTION, INTERVALL, NORMTIME) VALUES(?,?,?,?)`, [
-        name, description, intervall, normtime
+export const insert_category = async ({  mainCategoryId, subCategoryId }: { mainCategoryId: number, subCategoryId: number }) => {
+    return await mySqlClient.execute(`INSERT INTO Category(mainCategoryId, subCategoryId) VALUES(?,?)`, [
+        mainCategoryId, subCategoryId
     ]);
 }
 
-export const insert_sub_category = async ({  name, description, intervall, normtime }: {name: string, description: string, intervall: number, normtime: number }) => {
+/* export const insert_sub_category = async ({  name, description, intervall, normtime }: {name: string, description: string, intervall: number, normtime: number }) => {
     return await mySqlClient.execute(`INSERT INTO USER(NAME, DESCRIPTION, INTERVALL, NORMTIME) VALUES(?,?,?,?)`, [
         name, description, intervall, normtime
+    ]); 
+} */
+
+export const insert_devicecategory = async ({  deviceCategoryName, description, intervall, normtime }: {deviceCategoryName: string, description: string, intervall: string, normtime: string }) => {
+    return await mySqlClient.execute(`INSERT INTO DeviceCategory(NAME, DESCRIPTION, INTERVALL, NORMTIME) VALUES(?,?,?,?)`, [
+        deviceCategoryName, description, intervall, normtime
     ]);
 }
 

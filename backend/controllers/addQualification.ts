@@ -5,8 +5,8 @@ import { QualificationInterface } from '../models/QualificationInterface.ts'
 export async function addQualification ({ request, response }: { request: any; response: any }) {
     const body = await request.body().value;
     const qualificationInfo: QualificationInterface = {
-        qualification: body.get('qualification'),
-        qualificationDescription: body.get('qualificationDescription')
+        qualification: body.qualification,
+        qualificationDescription: body.qualificationDescription
     }
 
     let status = 400;
@@ -18,6 +18,5 @@ export async function addQualification ({ request, response }: { request: any; r
     } else {
       response.body = { "error": "Invalid request!" };
     }
-
-    response.status = status;
+    response.status = status; 
 }

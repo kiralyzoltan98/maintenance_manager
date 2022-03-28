@@ -1,4 +1,4 @@
 export interface CategoryInterface{
-    mainCategory: number,
-    subCategory: number
+    mainCategoryId: number,
+    subCategoryId: number
 }

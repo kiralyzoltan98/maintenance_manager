@@ -1,7 +1,7 @@
 export interface DeviceCategoryInterface {
-    deviceCategoryId: number,
-    deviceCategoryName: number,
+    deviceCategoryId?: number,
+    deviceCategoryName: string,
     description: string,
-    intervall: number,
-    time: string
+    intervall: string,
+    normtime: string
 }
