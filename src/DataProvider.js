@@ -1,4 +1,4 @@
-import { fetchUtils, Admin, Resource } from 'react-admin';
+    import { fetchUtils, Admin, Resource } from 'react-admin';
 //import simpleRestProvider from 'ra-data-simple-rest';
 import { stringify } from 'query-string';
 import {useState} from "react";
@@ -11,6 +11,8 @@ const httpClient = fetchUtils.fetchJson;
 export default {
 
     getList: (resource, params) => {
+
+        
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
@@ -28,14 +30,24 @@ export default {
 
         function parseID(response){
             let result = {};
-
+            
+            console.log("resourcolasi: ", response);
+            let key;
+            if (resource == "devices"){
+                
+                key = "DeviceId";
+            }else if (resource == "UserId") {
+                
+                key = "UserId";
+            }
+            
             response.forEach(element => {
 
-                if (element["UserId"]){
-                    element["id"] = element["UserId"];
+                if (element[key]){
+                    element["id"] = element[key];
                 }
                 result["count"] = element["id"];
-                delete element["UserId"];
+                delete element[key];
             });
             result["rows"] = response;
 
@@ -43,7 +55,7 @@ export default {
 
             return result;
         }
-
+        
         return httpClient(url).then(({ headers, json }) => ({
             data: parseID(json)["rows"],
             total: parseID(json)["count"],
