@@ -29,10 +29,10 @@ export const UserList = props => (
 export const UserCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="UserName" />
-            <TextInput source="Password" />
-            <TextInput multiline source="QualificationId" />
-            <TextInput source="Type" />
+            <TextInput source="userName" />
+            <TextInput source="password" />
+            <TextInput multiline source="qualificationId" />
+            <TextInput source="type" />
         </SimpleForm>
     </Create>
 );
