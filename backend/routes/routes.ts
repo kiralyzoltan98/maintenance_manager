@@ -10,6 +10,7 @@ import { addQualification } from '../controllers/addQualification.ts';
 import { addQualificationToCategory } from '../controllers/addQualificationToCategory.ts';
 import { getAllQualifications } from '../controllers/getAllQualifications.ts';
 import { getAllDeviceCategories } from '../controllers/getAllDeviceCategories.ts';
+import { getTaskByUserId } from '../controllers/getTaskByUserId.ts';
 
 const router = new Router();
 
@@ -23,5 +24,6 @@ router
     .get("/users", getAllUsers)
     .get("/qualifications", getAllQualifications)
     .get("/device-categories", getAllDeviceCategories)
-
+    .get("/task", getTaskByUserId)
+    
 export default router;

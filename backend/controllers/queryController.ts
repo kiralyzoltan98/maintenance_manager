@@ -37,6 +37,12 @@ export async function get_device_categories() {
     return await mySqlClient.execute(`SELECT * FROM DeviceCategory`);   
 }
 
+export async function get_task_by_user_id(userid : number){
+    return await mySqlClient.execute(`SELECT * FROM Task WHERE UserId = ?`, [
+        userid
+    ]);
+}
+
 //TODO
 //Table names to lowercase!!!
 export const insert_user = async ({ userName, password, qualificationId, type }: { userName: string; password: string, qualificationId: number, type: string }) => {
