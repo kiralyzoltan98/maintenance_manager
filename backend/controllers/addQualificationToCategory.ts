@@ -6,8 +6,8 @@ import { get_qualifications, get_device_categories, update_qualification_in_devi
 export async function addQualificationToCategory({ request, response }: { request: any; response: any }) {
     const body = await request.body().value;
     const qualificationInfo = {
-      qualificationId: body.get('qualificationId'),
-      deviceCategoryId: body.get('deviceCategoryId')
+      qualificationId: body.qualificationId,
+      deviceCategoryId: body.deviceCategoryId
     }
 
     let status = 400;

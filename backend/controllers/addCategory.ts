@@ -8,8 +8,8 @@ export async function addCategory ({ request, response }: { request: any; respon
     const body = await request.body().value;
  
     const categoryInfo: CategoryInterface = {
-        mainCategoryId: body.get('mainCategoryId'),
-        subCategoryId: body.get('subCategoryId')
+        mainCategoryId: body.mainCategoryId,
+        subCategoryId: body.subCategoryId
     }
     console.log({ body })
     console.log(categoryInfo.mainCategoryId, categoryInfo.subCategoryId)
