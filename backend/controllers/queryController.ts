@@ -24,6 +24,11 @@ export async function search( params: number) {
         return await mySqlClient.execute(`SELECT * FROM User`);   
     }
 }
+
+export async function return_devices() { 
+        return await mySqlClient.execute(`SELECT * FROM Device`);   
+}
+
 //TODO
 //Table names to lowercase!!!
 export const insert_user = async ({ userName, password, qualificationId, type }: { userName: string; password: string, qualificationId: number, type: string }) => {

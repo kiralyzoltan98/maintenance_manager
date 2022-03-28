@@ -1,6 +1,7 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
 import { getAllUsers } from '../controllers/getAllUsers.ts';
+import { getAllDevice } from '../controllers/getAllDevice.ts';
 import { addDevice } from '../controllers/addDevice.ts';
 import { addUser } from '../controllers/addUser.ts';
 import { login } from '../controllers/login.ts';
@@ -14,6 +15,7 @@ router
     //.post("/devices", getAllDevices) //TODO
     .post("/login", login)
     .post("/qualification", addQualification)
+    .get("/devices", getAllDevice)
     .get("/users", getAllUsers)
 
 export default router;
