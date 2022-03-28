@@ -29,6 +29,14 @@ export async function return_devices() {
         return await mySqlClient.execute(`SELECT * FROM Device`);   
 }
 
+export async function get_qualifications() { 
+    return await mySqlClient.execute(`SELECT * FROM Qualification`);   
+}
+
+export async function get_device_categories() { 
+    return await mySqlClient.execute(`SELECT * FROM DeviceCategory`);   
+}
+
 //TODO
 //Table names to lowercase!!!
 export const insert_user = async ({ userName, password, qualificationId, type }: { userName: string; password: string, qualificationId: number, type: string }) => {
@@ -46,6 +54,12 @@ export const insert_device = async ({ categoryId, deviceName, location }: {categ
 export const insert_qualification = async ({ qualification, qualificationDescription }: { qualification: string, qualificationDescription: string }) => {
     return await mySqlClient.execute(`INSERT INTO Qualification(Qualification, QualificationDescription) VALUES(?,?)`, [
         qualification, qualificationDescription
+    ]);
+}
+
+export const update_qualification_in_device_category = async ({ qualificationId, deviceCategoryId }: { qualificationId: number, deviceCategoryId: number }) => {
+    return await mySqlClient.execute(`UPDATE DeviceCategory SET QualificationId = ? WHERE DeviceCategoryId = ?`, [
+        qualificationId, deviceCategoryId
     ]);
 }
 
