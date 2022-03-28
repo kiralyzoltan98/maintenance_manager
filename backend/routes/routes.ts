@@ -11,6 +11,7 @@ import { addQualificationToCategory } from '../controllers/addQualificationToCat
 import { getAllQualifications } from '../controllers/getAllQualifications.ts';
 import { getAllDeviceCategories } from '../controllers/getAllDeviceCategories.ts';
 import { getTaskByUserId } from '../controllers/getTaskByUserId.ts';
+import { addDeviceCategory } from '../controllers/addDeviceCategory.ts';
 
 const router = new Router();
 
@@ -19,7 +20,7 @@ router
     .post("/device", addDevice)
     .post("/login", login)
     .post("/qualification", addQualification)
-    .put("/qualification-to-category", addQualificationToCategory)
+    .post("/devicecategory", addDeviceCategory)
     .get("/devices", getAllDevice)
     .get("/users", getAllUsers)
     .get("/qualifications", getAllQualifications)

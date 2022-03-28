@@ -1,4 +1,4 @@
-import { fetchUtils, Admin, Resource } from 'react-admin';
+    import { fetchUtils, Admin, Resource } from 'react-admin';
 //import simpleRestProvider from 'ra-data-simple-rest';
 import { stringify } from 'query-string';
 import {useState} from "react";
@@ -11,6 +11,8 @@ const httpClient = fetchUtils.fetchJson;
 export default {
 
     getList: (resource, params) => {
+
+        
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
@@ -28,14 +30,25 @@ export default {
 
         function parseID(response){
             let result = {};
+            
+            console.log("resourcolasi: ", response);
+            console.log("resource: ", resource);
 
+            let key;
+            if (resource == "devices"){
+                key = "DeviceId";
+            }else if (resource == "users") {
+                
+                key = "UserId";
+            }
+            
             response.forEach(element => {
 
-                if (element["UserId"]){
-                    element["id"] = element["UserId"];
+                if (element[key]){
+                    element["id"] = element[key];
                 }
                 result["count"] = element["id"];
-                delete element["UserId"];
+                delete element[key];
             });
             result["rows"] = response;
 
@@ -43,7 +56,7 @@ export default {
 
             return result;
         }
-
+        
         return httpClient(url).then(({ headers, json }) => ({
             data: parseID(json)["rows"],
             total: parseID(json)["count"],
@@ -101,28 +114,35 @@ export default {
     },
 
     create: async (resource, params) => {
-        const url = `http://localhost:8000/user`;
-        console.log("create params: ", params);
+        const url = `${apiUrl}/${resource}`;
         console.log("create params: ", params.data.UserName);
         params = params.data;
+        console.log("create params: ", params);
+        let bodyData;
+        async function checkCreate() {
 
-        async function checkLogin() {
+            if (resource == "devices"){
+                bodyData = "DeviceId";
+            }else if (resource == "users") {
+                
+                bodyData = params;
+            }
+            
             const requestOptions = {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
                     'Content-Type' : 'application/json',
                 },
-                //userName, password, qualificationId, type
                 body: JSON.stringify({userName: params.UserName, password: params.Password,
-                                            qualificationId: params.QualificationId, type: params.Type})
+                    qualificationId: params.QualificationId, type: params.Type})
             };
             const request = await fetch(url, requestOptions);
             const data = request.json();
             return data;
         }
 
-        const response = await checkLogin().then();
+        const response = await checkCreate().then();
         console.log(response.loggedInUser);
     },
 
