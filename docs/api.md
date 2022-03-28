@@ -34,9 +34,7 @@
 `
 [
   {
-    "QualificationId": 1,
-    "Qualification": "qualificationNameTest",
-    "QualificationDescription": "Test description..."
+    deviceCategory
   },
   ...
 `
