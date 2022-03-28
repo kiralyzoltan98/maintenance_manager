@@ -33,6 +33,10 @@ export async function get_qualifications() {
     return await mySqlClient.execute(`SELECT * FROM Qualification`);   
 }
 
+export async function get_all_categories() { 
+    return await mySqlClient.execute(`SELECT * FROM Category`);   
+}
+
 export async function get_device_categories() { 
     return await mySqlClient.execute(`SELECT * FROM DeviceCategory`);   
 }
