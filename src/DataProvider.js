@@ -8,19 +8,16 @@ import {element} from "prop-types";
 const apiUrl = `http://localhost:8000`;
 const httpClient = fetchUtils.fetchJson;
 
+
 export default {
 
     getList: (resource, params) => {
 
-        
-        const { page, perPage } = params.pagination;
-        const { field, order } = params.sort;
-        const query = {
-            sort: JSON.stringify([field, order]),
-            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-            filter: JSON.stringify(params.filter),
-        };
-        const url = `${apiUrl}/${resource}`;
+        let url = `${apiUrl}/${resource}`;
+
+        if (resource === "qualifications") {
+            url = `${apiUrl}/qualifications`;
+        }
 
         /**
          *
@@ -34,12 +31,10 @@ export default {
             console.log("resourcolasi: ", response);
             console.log("resource: ", resource);
 
-            let key;
-            if (resource == "devices"){
-                key = "DeviceId";
-            }else if (resource == "users") {
-                
-                key = "UserId";
+            let key = resource === "devices" ? "DeviceId" : "UserId";
+
+            if (resource === "qualifications") {
+                key = "QualificationId";
             }
             
             response.forEach(element => {
@@ -52,7 +47,8 @@ export default {
             });
             result["rows"] = response;
 
-            console.log("RESP: ", result);
+            console.log("RESP: ", result, key);
+            console.log("KEY: ", key);
 
             return result;
         }
@@ -117,10 +113,13 @@ export default {
 
         let urlParam = resource === "devices" ? "device" : "user";
 
+        if (resource === "qualifications") {
+            urlParam = `category`;
+        }
+
         const url = `${apiUrl}/${urlParam}`;
         params = params.data;
         console.log("create params: ", params);
-        let bodyData;
         async function checkCreate() {
 
             const requestOptions = {

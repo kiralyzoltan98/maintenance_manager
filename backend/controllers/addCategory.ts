@@ -36,12 +36,12 @@ export async function addCategory ({ request, response }: { request: any; respon
 
     //const hasValues = (categoryInfo.mainCategoryId != 0 && categoryInfo.subCategoryId.toString().length != 0)
     
-    if (!isMainCatExists && !isMainCatExists && isNotEqual) {
+    if (isMainCatExists && isMainCatExists && isNotEqual) {
       response.body = await insert_category(categoryInfo);
       status = 200;
-    } else if(isMainCatExists){
+    } else if(!isMainCatExists){
       response.body = { "error": "Main category does not exist!" };
-    }else if(isSubCatExists){
+    }else if(!isSubCatExists){
       response.body = { "error": "Sub category does not exist!" };
     }else {
       response.body = { "error": "Invalid request!" };

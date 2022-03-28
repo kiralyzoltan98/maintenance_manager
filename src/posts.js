@@ -31,11 +31,17 @@ export const PostList = props => (
     </List>
 );
 
+
+
 export const PostCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="title" />
-            <TextInput multiline source="body" />
+            <ReferenceInput source="Qualification" reference="users">
+                <SelectInput optionText="Qualification" />
+            </ReferenceInput>
+            <ReferenceInput source="Qualification" reference="users">
+                <SelectInput optionText="Qualification" />
+            </ReferenceInput>
         </SimpleForm>
     </Create>
 );
