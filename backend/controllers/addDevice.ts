@@ -6,7 +6,7 @@ export async function addDevice ({ request, response }: { request: any; response
     const body = await request.body().value;
 
     const deviceInfo: DeviceInterface = {
-      deviceId: body.get('categoryId'),
+      categoryId: body.get('categoryId'),
       deviceName: body.get('deviceName'),
       location: body.get('location')
     }
