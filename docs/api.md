@@ -15,6 +15,46 @@
   ...
 `
 
+## /qualifications
+- returns all qualifications
+**response**
+`
+[
+  {
+    "QualificationId": 1,
+    "Qualification": "qualificationNameTest",
+    "QualificationDescription": "Test description..."
+  },
+  ...
+`
+
+## /device-categories
+- returns all users
+**response**
+`
+[
+  {
+    "QualificationId": 1,
+    "Qualification": "qualificationNameTest",
+    "QualificationDescription": "Test description..."
+  },
+  ...
+`
+
+## /task
+- get task by userId
+**params**
+- userId : number
+
+**response**
+`
+[
+  {
+    task
+  },
+  ...
+`
+
 
 # POST
 
@@ -40,4 +80,30 @@
 
 **response**
  - { user }
+ - Invalid username or password!
+
+  ## /qualification
+ **params**
+  - qualification, qualificationDescription
+
+**response**
+ - {  "affectedRows": x, "lastInsertId": y }
+ - Invalid username or password!
+
+   ## /devicecategory
+ **params**
+  - deviceCategoryName, description, intervall, normtime
+
+**response**
+ - {  "affectedRows": x, "lastInsertId": y }
+ - Invalid username or password!
+
+   ## /category
+ **params**
+  - mainCategoryId, subCategoryId
+
+**response**
+ - {  "affectedRows": x, "lastInsertId": y }
+ - Main category does not exist!
+ - Sub category does not exist!
  - Invalid username or password!
