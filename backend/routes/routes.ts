@@ -11,6 +11,7 @@ const szaft = "";
 router
     .post("/user", addUser)
     .post("/device", addDevice)
+    //.post("/devices", getAllDevices) //TODO
     .post("/login", login)
     .post("/qualification", addQualification)
     .get("/users", getAllUsers)

@@ -5,13 +5,12 @@ import {useState} from "react";
 import {element} from "prop-types";
 
 
-const apiUrl = `http://localhost:8000/users`;
+const apiUrl = `http://localhost:8000`;
 const httpClient = fetchUtils.fetchJson;
 
 export default {
 
     getList: (resource, params) => {
-        console.log("PARAMS: LIST :: ", params);
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
@@ -19,7 +18,7 @@ export default {
             range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
             filter: JSON.stringify(params.filter),
         };
-        const url = `${apiUrl}`;
+        const url = `${apiUrl}/${resource}`;
 
         /**
          *
@@ -37,14 +36,12 @@ export default {
                 }
                 result["count"] = element["id"];
                 delete element["UserId"];
-                console.log("element with new id: ", element)
             });
             result["rows"] = response;
 
             console.log("RESP: ", result);
 
             return result;
-            //response.forEach(element => console.log(element));
         }
 
         return httpClient(url).then(({ headers, json }) => ({

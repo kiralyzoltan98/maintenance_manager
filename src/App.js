@@ -14,7 +14,7 @@ import DataProvider from "./DataProvider";
 
 const App = () => (
     <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={DataProvider} >
-        <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/>
+        <Resource name="devices" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/>
         <Resource name="users" list={UserList} create={UserCreate} icon={UserIcon}/>
     </Admin>
 );
