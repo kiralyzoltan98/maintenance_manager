@@ -32,11 +32,12 @@ export default {
             let result = {};
             
             console.log("resourcolasi: ", response);
+            console.log("resource: ", resource);
+
             let key;
             if (resource == "devices"){
-                
                 key = "DeviceId";
-            }else if (resource == "UserId") {
+            }else if (resource == "users") {
                 
                 key = "UserId";
             }
@@ -113,28 +114,35 @@ export default {
     },
 
     create: async (resource, params) => {
-        const url = `http://localhost:8000/user`;
-        console.log("create params: ", params);
+        const url = `${apiUrl}/${resource}`;
         console.log("create params: ", params.data.UserName);
         params = params.data;
+        console.log("create params: ", params);
+        let bodyData;
+        async function checkCreate() {
 
-        async function checkLogin() {
+            if (resource == "devices"){
+                bodyData = "DeviceId";
+            }else if (resource == "users") {
+                
+                bodyData = params;
+            }
+            
             const requestOptions = {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
                     'Content-Type' : 'application/json',
                 },
-                //userName, password, qualificationId, type
                 body: JSON.stringify({userName: params.UserName, password: params.Password,
-                                            qualificationId: params.QualificationId, type: params.Type})
+                    qualificationId: params.QualificationId, type: params.Type})
             };
             const request = await fetch(url, requestOptions);
             const data = request.json();
             return data;
         }
 
-        const response = await checkLogin().then();
+        const response = await checkCreate().then();
         console.log(response.loggedInUser);
     },
 

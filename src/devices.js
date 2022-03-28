@@ -17,10 +17,8 @@ export const DeviceList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="UserName" />
-            <TextField source="Password" />
-            <TextField source="QualificationId" />
-            <TextField source="Type" />
+            <TextField source="DeviceName" />
+            <TextField source="Location" />
         </Datagrid>
         
     </List>
@@ -29,10 +27,8 @@ export const DeviceList = props => (
 export const DeviceCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="UserName" />
-            <TextInput source="Password" />
-            <TextInput multiline source="QualificationId" />
-            <TextInput source="Type" />
+            <TextInput source="DeviceName" />
+            <TextInput source="Location" />
         </SimpleForm>
     </Create>
 );
