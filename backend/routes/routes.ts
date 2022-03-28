@@ -9,6 +9,7 @@ import { login } from '../controllers/login.ts';
 import { addQualification } from '../controllers/addQualification.ts';
 import { addQualificationToCategory } from '../controllers/addQualificationToCategory.ts';
 import { getAllQualifications } from '../controllers/getAllQualifications.ts';
+import { getAllDeviceCategories } from '../controllers/getAllDeviceCategories.ts';
 
 const router = new Router();
 
@@ -21,5 +22,6 @@ router
     .get("/devices", getAllDevice)
     .get("/users", getAllUsers)
     .get("/qualifications", getAllQualifications)
+    .get("/device-categories", getAllDeviceCategories)
 
 export default router;
