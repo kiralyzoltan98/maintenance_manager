@@ -12,7 +12,7 @@ export async function addDevice ({ request, response }: { request: any; response
     }
 
     let status = 400;
-    const hasValues = (deviceInfo.deviceName.length != 0 && deviceInfo.location.length != 0)
+    const hasValues = (deviceInfo.categoryId.toString().length != 0 && deviceInfo.deviceName.length != 0 && deviceInfo.location.length != 0)
     
     if (hasValues) {
       response.body = await insert_device(deviceInfo);
