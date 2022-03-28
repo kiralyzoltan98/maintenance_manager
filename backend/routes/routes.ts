@@ -24,6 +24,7 @@ router
     .post("/qualification", addQualification)
     .post("/devicecategory", addDeviceCategory)
     .post("/category", addCategory)
+    .post("/qualification-to-category", addQualificationToCategory)
     .get("/devices", getAllDevice)
     .get("/users", getAllUsers)
     .get("/qualifications", getAllQualifications)
