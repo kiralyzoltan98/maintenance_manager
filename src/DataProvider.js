@@ -114,28 +114,22 @@ export default {
     },
 
     create: async (resource, params) => {
-        const url = `${apiUrl}/${resource}`;
-        console.log("create params: ", params.data.UserName);
+
+        let urlParam = resource === "devices" ? "device" : "user";
+
+        const url = `${apiUrl}/${urlParam}`;
         params = params.data;
         console.log("create params: ", params);
         let bodyData;
         async function checkCreate() {
 
-            if (resource == "devices"){
-                bodyData = "DeviceId";
-            }else if (resource == "users") {
-                
-                bodyData = params;
-            }
-            
             const requestOptions = {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
                     'Content-Type' : 'application/json',
                 },
-                body: JSON.stringify({userName: params.UserName, password: params.Password,
-                    qualificationId: params.QualificationId, type: params.Type})
+                body: JSON.stringify(params)
             };
             const request = await fetch(url, requestOptions);
             //const data = request.json();

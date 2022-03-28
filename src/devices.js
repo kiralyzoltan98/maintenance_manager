@@ -27,9 +27,9 @@ export const DeviceList = props => (
 export const DeviceCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="CategoryId" />
-            <TextInput source="DeviceName" />
-            <TextInput source="Location" />
+            <TextInput source="categoryId" />
+            <TextInput source="deviceName" />
+            <TextInput source="location" />
         </SimpleForm>
     </Create>
 );
