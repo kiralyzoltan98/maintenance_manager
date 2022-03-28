@@ -5,12 +5,13 @@ import { DeviceInterface } from '../models/DeviceInterface.ts';
 export async function addDevice ({ request, response }: { request: any; response: any }) {
     const body = await request.body().value;
     const deviceInfo: DeviceInterface = {
+      categoryId : body.categoryId,
       deviceName: body.deviceName,
       location: body.location
     }
 
     let status = 400;
-    const hasValues = (deviceInfo.deviceName.length != 0 && deviceInfo.location.length != 0)
+    const hasValues = (deviceInfo.categoryId.toString().length != 0 && deviceInfo.deviceName.length != 0 && deviceInfo.location.length != 0)
     
     if (hasValues) {
       response.body = await insert_device(deviceInfo);

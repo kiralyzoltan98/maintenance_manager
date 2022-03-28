@@ -138,8 +138,9 @@ export default {
                     qualificationId: params.QualificationId, type: params.Type})
             };
             const request = await fetch(url, requestOptions);
-            const data = request.json();
-            return data;
+            //const data = request.json();
+            let data;
+            return data ? data : "error" ;
         }
 
         const response = await checkCreate().then();
