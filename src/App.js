@@ -22,7 +22,7 @@ const App = () => (
         <Resource name="users" list={UserList} create={UserCreate} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={LaptopIcon}/>
-        <Resource name="devicecategory" list={CategoryList} create={CategoryCreate} icon={LaptopIcon}/>
+        <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={LaptopIcon}/>
     </Admin>
 );
 

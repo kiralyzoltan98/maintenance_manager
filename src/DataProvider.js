@@ -17,7 +17,7 @@ export default {
 
         if (resource === "qualifications") {
             url = `${apiUrl}/qualifications`;
-        }else if(resource === "categories"){
+        }else if(resource === "devicecategories"){
             url = `${apiUrl}/devicecategories`;
         }
 
@@ -30,17 +30,15 @@ export default {
         function parseID(response){
             let result = {};
             
-            console.log("resourcolasi: ", response);
+            console.log("Pesponse: ", response);
             console.log("resource: ", resource);
-
-            const responseNames = ["devices", "users", "qualifications", "categories"]
 
             let key = resource === "devices" ? "DeviceId" : "UserId";
 
             if (resource === "qualifications") {
                 key = "QualificationId";
-            }else if(resource === "categories"){
-                key = "DeviceCategoriesId";
+            }else if(resource === "devicecategories"){
+                key = "DeviceCategoryId";
             }
             
             response.forEach(element => {
@@ -122,7 +120,7 @@ export default {
         if (resource === "qualifications") {
             urlParam = `category`;
         }
-        if(resource === "devicecategory"){
+        if(resource === "devicecategories"){
             urlParam = `devicecategory`;
         }
 

@@ -16,6 +16,7 @@ import {
 export const CategoryList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
+            <TextField source="DeviceCategoryId" />
             <TextField source="DeviceCategoryName" />
             <TextField source="Description" />
             <TextField source="Interval" />
