@@ -87,7 +87,7 @@ export const insert_category = async ({  mainCategoryId, subCategoryId }: { main
 } */
 
 export const insert_devicecategory = async ({  deviceCategoryName, description, intervall, normtime }: {deviceCategoryName: string, description: string, intervall: string, normtime: string }) => {
-    return await mySqlClient.execute(`INSERT INTO DeviceCategory(NAME, DESCRIPTION, INTERVALL, NORMTIME) VALUES(?,?,?,?)`, [
+    return await mySqlClient.execute(`INSERT INTO DeviceCategory(DeviceCategoryName, description, intervall, time) VALUES(?,?,?,?)`, [
         deviceCategoryName, description, intervall, normtime
     ]);
 }

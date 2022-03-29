@@ -13,6 +13,7 @@ import LaptopIcon from '@material-ui/icons/Laptop';
 
 import DataProvider from "./DataProvider";
 import {QualificationList, QualificationCreate} from "./qualifications";
+import {CategoryList, CategoryCreate} from "./categories";
 //const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
         <Resource name="users" list={UserList} create={UserCreate} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={LaptopIcon}/>
+        <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={LaptopIcon}/>
     </Admin>
 );
 
