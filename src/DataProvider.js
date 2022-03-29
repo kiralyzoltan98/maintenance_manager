@@ -97,13 +97,17 @@ export default {
         }));
     },
 
-    update: (resource, params) =>
+    update: (resource, params) => {
+        console.log("Update many params: ", params);
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
-        }).then(({ json }) => ({ data: json })),
+        }).then(({ json }) => ({ data: json }));
+    },
+
 
     updateMany: (resource, params) => {
+        console.log("Update many params: ", params);
         const query = {
             filter: JSON.stringify({ id: params.ids}),
         };
@@ -150,17 +154,57 @@ export default {
 
 
 
-    delete: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`, {
-            method: 'DELETE',
-        }).then(({ json }) => ({ data: json })),
+    delete: (resource, params) => {
 
-    deleteMany: (resource, params) => {
-        const query = {
-            filter: JSON.stringify({ id: params.ids}),
-        };
-        return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
+        console.log("Delete params: ", params);
+        let urlParam = resource === "devices" ? "device" : "user";
+
+        if (resource === "qualifications") {
+            urlParam = `category`;
+        }
+        if(resource === "devicecategories"){
+            urlParam = `devicecategory`;
+        }
+
+        const url = `${apiUrl}/${urlParam}`;
+
+        httpClient(url, {
             method: 'DELETE',
         }).then(({ json }) => ({ data: json }));
+    },
+
+    deleteMany: async (resource, params) => {
+
+        console.log("Delete many params: ", params);
+        let urlParam = resource === "devices" ? "device" : "user";
+
+        if (resource === "qualifications") {
+            urlParam = `category`;
+        }
+        if (resource === "devicecategories") {
+            urlParam = `devicecategory`;
+        }
+
+        const url = `${apiUrl}/${urlParam}`;
+
+        async function checkDelete() {
+
+            const requestOptions = {
+                method: 'DELETE',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({userId: params.ids[0]})
+            };
+            console.log({userId: params.ids[0]});
+            const request = await fetch(url, requestOptions);
+            //const data = request.json();
+            let data;
+            return data ? data : "error";
+        }
+
+        const response = await checkDelete().then();
+        console.log(response.loggedInUser);
     }
 };
