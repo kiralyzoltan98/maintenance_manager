@@ -14,6 +14,7 @@ import { getTaskByUserId } from '../controllers/getTaskByUserId.ts';
 import { addDeviceCategory } from '../controllers/addDeviceCategory.ts';
 import { addCategory } from '../controllers/addCategory.ts';
 import { getAllCategories } from '../controllers/getCategories.ts';
+import { deleteUserById } from '../controllers/deleteUserById.ts';
 
 const router = new Router();
 
@@ -25,11 +26,14 @@ router
     .post("/devicecategory", addDeviceCategory)
     .post("/category", addCategory)
     .post("/qualification-to-category", addQualificationToCategory)
+
     .get("/devices", getAllDevice)
     .get("/users", getAllUsers)
     .get("/qualifications", getAllQualifications)
     .get("/devicecategories", getAllDeviceCategories)
     .get("/task", getTaskByUserId)
     .get("/categories", getAllCategories)
+    
+    .delete("/user", deleteUserById)
     
 export default router;

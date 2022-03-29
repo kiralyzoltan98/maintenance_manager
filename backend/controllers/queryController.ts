@@ -92,6 +92,12 @@ export const insert_devicecategory = async ({  deviceCategoryName, description, 
     ]);
 }
 
+export const delete_user_by_id = async ({ userId }: {userId : number }) => {
+    return await mySqlClient.execute(`DELETE FROM User WHERE userId = ?`, [
+        userId
+    ]);
+}
+
 
 /* export const delete_user = async (ctx: Context) => {
     let result = await mySqlClient.execute(`delete from users where ?? = ?`, ["id", 1]);
