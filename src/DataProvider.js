@@ -7,7 +7,12 @@ import {element} from "prop-types";
 
 const apiUrl = `http://localhost:8000`;
 const httpClient = fetchUtils.fetchJson;
-
+const dbIdMap = {
+    devices: "DeviceId",
+    users: "UserId",
+    qualifications: "QualificationId",
+    devicecategories: "DeviceCategoryId",
+};
 
 export default {
 
@@ -15,11 +20,7 @@ export default {
 
         let url = `${apiUrl}/${resource}`;
 
-        if (resource === "qualifications") {
-            url = `${apiUrl}/qualifications`;
-        }else if(resource === "devicecategories"){
-            url = `${apiUrl}/devicecategories`;
-        }
+        console.log(dbIdMap[resource]);
 
         /**
          *
@@ -29,20 +30,12 @@ export default {
 
         function parseID(response){
             let result = {};
-            
-            console.log("Pesponse: ", response);
-            console.log("resource: ", resource);
 
-            let key = resource === "devices" ? "DeviceId" : "UserId";
+            let key = dbIdMap[resource];
 
-            if (resource === "qualifications") {
-                key = "QualificationId";
-            }else if(resource === "devicecategories"){
-                key = "DeviceCategoryId";
-            }
+            console.log("KEY: ", dbIdMap[resource]);
             
             response.forEach(element => {
-
                 if (element[key]){
                     element["id"] = element[key];
                 }
@@ -50,18 +43,13 @@ export default {
                 delete element[key];
             });
             result["rows"] = response;
-
-            console.log("RESP: ", result, key);
-            console.log("KEY: ", key);
-
+            console.log("Result, KEY: ", result, key);
             return result;
         }
         
-        return httpClient(url).then(({ headers, json }) => ({
+        return httpClient(url).then(({ headers, json, status }) => ({
             data: parseID(json)["rows"],
             total: parseID(json)["count"],
-            //data: json,
-            //total: json.total,
         }));
     },
 
