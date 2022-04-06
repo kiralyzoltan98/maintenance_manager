@@ -16,6 +16,8 @@ import { addCategory } from '../controllers/addCategory.ts';
 import { getAllCategories } from '../controllers/getCategories.ts';
 import { deleteUserById } from '../controllers/deleteUserById.ts';
 import { addQualificationToUser } from '../controllers/addQualificationToUser.ts';
+import { addTask } from '../controllers/addTask.ts';
+import { getAllMaintenances } from '../controllers/getAllMaintenances.ts';
 
 const router = new Router();
 
@@ -28,6 +30,7 @@ router
     .post("/category", addCategory)
     .post("/qualification-to-category", addQualificationToCategory)
     .post("/qualification-to-user", addQualificationToUser)
+    .post("/task", addTask)
 
     .get("/devices", getAllDevice)
     .get("/users", getAllUsers)
@@ -35,6 +38,7 @@ router
     .get("/devicecategories", getAllDeviceCategories)
     .get("/task", getTaskByUserId)
     .get("/categories", getAllCategories)
+    .get("/maintenances", getAllMaintenances)
 
     .delete("/user", deleteUserById)
     

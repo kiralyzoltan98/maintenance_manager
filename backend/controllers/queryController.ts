@@ -41,6 +41,10 @@ export async function get_device_categories() {
     return await mySqlClient.execute(`SELECT * FROM DeviceCategory`);   
 }
 
+export async function get_all_maintenances() { 
+    return await mySqlClient.execute(`SELECT * FROM Maintenance`);   
+}
+
 export async function get_task_by_user_id(userid : number){
     return await mySqlClient.execute(`SELECT * FROM Task WHERE UserId = ?`, [
         userid
@@ -95,6 +99,12 @@ export const insert_category = async ({  mainCategoryId, subCategoryId }: { main
 export const insert_devicecategory = async ({  deviceCategoryName, description, intervall, normtime }: {deviceCategoryName: string, description: string, intervall: string, normtime: string }) => {
     return await mySqlClient.execute(`INSERT INTO DeviceCategory(DeviceCategoryName, description, intervall, time) VALUES(?,?,?,?)`, [
         deviceCategoryName, description, intervall, normtime
+    ]);
+}
+
+export const insert_task = async ({  maintenanceId, userId, qualificationId, date }: {maintenanceId: number, userId: number, qualificationId: number, date: string }) => {
+    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date) VALUES(?,?,?,?)`, [
+        maintenanceId, userId, qualificationId, date
     ]);
 }
 
