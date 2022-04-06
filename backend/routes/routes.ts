@@ -18,6 +18,7 @@ import { deleteUserById } from '../controllers/deleteUserById.ts';
 import { addQualificationToUser } from '../controllers/addQualificationToUser.ts';
 import { addTask } from '../controllers/addTask.ts';
 import { getAllMaintenances } from '../controllers/getAllMaintenances.ts';
+import { getAllTasks } from '../controllers/getAllTasks.ts';
 
 const router = new Router();
 
@@ -36,6 +37,7 @@ router
     .get("/users", getAllUsers)
     .get("/qualifications", getAllQualifications)
     .get("/devicecategories", getAllDeviceCategories)
+    .get("/tasks", getAllTasks)
     .get("/task", getTaskByUserId)
     .get("/categories", getAllCategories)
     .get("/maintenances", getAllMaintenances)

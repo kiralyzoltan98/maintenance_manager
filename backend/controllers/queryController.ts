@@ -45,11 +45,16 @@ export async function get_all_maintenances() {
     return await mySqlClient.execute(`SELECT * FROM Maintenance`);   
 }
 
+export async function get_all_tasks() { 
+    return await mySqlClient.execute(`SELECT * FROM Task`);   
+}
+
 export async function get_task_by_user_id(userid : number){
     return await mySqlClient.execute(`SELECT * FROM Task WHERE UserId = ?`, [
         userid
     ]);
 }
+
 
 //TODO
 //Table names to lowercase!!!
