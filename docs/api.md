@@ -64,6 +64,32 @@
   ...
 `
 
+## /tasks
+
+**response**
+`
+[
+  {
+    "MaintenanceId": 1,
+    "UserId": 1,
+    "QualificationId": 1,
+    "Date": "2022-04-06T00:00:00.000Z"
+  }
+  ...
+]`
+
+## /maintenances
+
+**response**
+`
+[
+  {
+    Maintenance
+  }
+  ...
+]`
+
+
 
 
 # POST
@@ -100,7 +126,7 @@
  - {  "affectedRows": x, "lastInsertId": y }
  - Invalid username or password!
 
-   ## /devicecategory
+  ## /devicecategory
  **params**
   - deviceCategoryName, description, intervall, normtime
 
@@ -108,7 +134,7 @@
  - {  "affectedRows": x, "lastInsertId": y }
  - Invalid username or password!
 
-   ## /category
+  ## /category
  **params**
   - mainCategoryId, subCategoryId
 
@@ -117,3 +143,35 @@
  - Main category does not exist!
  - Sub category does not exist!
  - Invalid username or password!
+
+  ## /qualification-to-user
+ **params**
+  - qualificationId, userId
+
+**response**
+ - {  "affectedRows": x, "lastInsertId": y }
+ - Qualification does not exist!
+ - User does not exist!
+ - Invalid request!
+
+  ## /qualification-to-user
+ **params**
+  - qualificationId, userId
+
+**response**
+ - {  "affectedRows": x, "lastInsertId": y }
+ - Qualification does not exist!
+ - User does not exist!
+ - Invalid request!
+
+  ## /task
+ **params**
+  - maintenanceId, userId, qualificationId, date
+
+**response**
+ - {  "affectedRows": x, "lastInsertId": y }
+ - UserId does not exists!
+ - QualificationId does not exists!
+ - Invalid request!
+
+
