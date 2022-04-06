@@ -73,6 +73,12 @@ export const update_qualification_in_device_category = async ({ qualificationId,
     ]);
 }
 
+export const update_qualification_in_user = async ({ qualificationId, userId }: { qualificationId: number, userId: number }) => {
+    return await mySqlClient.execute(`UPDATE User SET QualificationId = ? WHERE UserId = ?`, [
+        qualificationId, userId
+    ]);
+}
+
 
 export const insert_category = async ({  mainCategoryId, subCategoryId }: { mainCategoryId: number, subCategoryId: number }) => {
     return await mySqlClient.execute(`INSERT INTO Category(mainCategoryId, subCategoryId) VALUES(?,?)`, [
