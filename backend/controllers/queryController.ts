@@ -41,11 +41,20 @@ export async function get_device_categories() {
     return await mySqlClient.execute(`SELECT * FROM DeviceCategory`);   
 }
 
+export async function get_all_maintenances() { 
+    return await mySqlClient.execute(`SELECT * FROM Maintenance`);   
+}
+
+export async function get_all_tasks() { 
+    return await mySqlClient.execute(`SELECT * FROM Task`);   
+}
+
 export async function get_task_by_user_id(userid : number){
     return await mySqlClient.execute(`SELECT * FROM Task WHERE UserId = ?`, [
         userid
     ]);
 }
+
 
 //TODO
 //Table names to lowercase!!!
@@ -73,6 +82,12 @@ export const update_qualification_in_device_category = async ({ qualificationId,
     ]);
 }
 
+export const update_qualification_in_user = async ({ qualificationId, userId }: { qualificationId: number, userId: number }) => {
+    return await mySqlClient.execute(`UPDATE User SET QualificationId = ? WHERE UserId = ?`, [
+        qualificationId, userId
+    ]);
+}
+
 
 export const insert_category = async ({  mainCategoryId, subCategoryId }: { mainCategoryId: number, subCategoryId: number }) => {
     return await mySqlClient.execute(`INSERT INTO Category(mainCategoryId, subCategoryId) VALUES(?,?)`, [
@@ -89,6 +104,12 @@ export const insert_category = async ({  mainCategoryId, subCategoryId }: { main
 export const insert_devicecategory = async ({  deviceCategoryName, description, intervall, normtime }: {deviceCategoryName: string, description: string, intervall: string, normtime: string }) => {
     return await mySqlClient.execute(`INSERT INTO DeviceCategory(DeviceCategoryName, description, intervall, time) VALUES(?,?,?,?)`, [
         deviceCategoryName, description, intervall, normtime
+    ]);
+}
+
+export const insert_task = async ({  maintenanceId, userId, qualificationId, date }: {maintenanceId: number, userId: number, qualificationId: number, date: string }) => {
+    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date) VALUES(?,?,?,?)`, [
+        maintenanceId, userId, qualificationId, date
     ]);
 }
 
