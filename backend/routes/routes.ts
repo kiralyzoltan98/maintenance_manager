@@ -38,7 +38,7 @@ router
     .get("/qualifications", getAllQualifications)
     .get("/devicecategories", getAllDeviceCategories)
     .get("/tasks", getAllTasks)
-    .get("/task", getTaskByUserId)
+    .get("/task-by-id", getTaskByUserId)
     .get("/categories", getAllCategories)
     .get("/maintenances", getAllMaintenances)
 
