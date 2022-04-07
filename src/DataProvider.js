@@ -136,7 +136,7 @@ export default {
         }
 
         const response = await checkCreate().then();
-        console.log(response.loggedInUser);
+        return {data: {id: response.lastInsertId}};
     },
 
 
