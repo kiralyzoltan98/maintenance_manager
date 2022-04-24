@@ -34,12 +34,17 @@
 `
 [
   {
-    deviceCategory
+    DeviceCategoryId,
+    DeviceCategoryName,
+    Description,
+    Intervall,
+    Time,
+    QualificationId
   },
   ...
 `
 
-## /task
+## /task-by-id
 - get task by userId
 **URL params**
 - userId : number
@@ -48,7 +53,10 @@
 `
 [
   {
-    task
+    MaintenanceId,
+    UserId,
+    QualificationId,
+    Date
   },
   ...
 `
@@ -59,7 +67,8 @@
 `
 [
   {
-    Category
+    MainCategoryId,
+    SubCategoryId
   },
   ...
 `
@@ -84,7 +93,13 @@
 `
 [
   {
-    Maintenance
+    MaintenanceId,
+    Type,
+    Deadline,
+    Priority,
+    Status,
+    IgnoreMessage,
+    DeviceId
   }
   ...
 ]`
@@ -115,7 +130,13 @@
   - userName, password
 
 **response**
- - { user }
+ - { 
+   UserId,
+   UserName,
+   Password,
+   QualificationId,
+   Type
+  }
  - Invalid username or password!
 
   ## /qualification

@@ -11,6 +11,9 @@ import authProvider from "./authProvider";
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
 import LaptopIcon from '@material-ui/icons/Laptop';
+import CategoryIcon from '@material-ui/icons/Category';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+
 
 import DataProvider from "./DataProvider";
 import {QualificationList, QualificationCreate} from "./qualifications";
@@ -22,8 +25,8 @@ const App = () => (
         <Resource name="tasks" list={TaskList} edit={PostEdit} create={TaskCreate} icon={PostIcon}/>
         <Resource name="users" list={UserList} create={UserCreate} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
-        <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={LaptopIcon}/>
-        <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={LaptopIcon}/>
+        <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon}/>
+        <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
     </Admin>
 );
 
