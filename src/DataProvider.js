@@ -34,8 +34,8 @@ export default {
 
             let key = dbIdMap[resource];
 
-            console.log("KEY: ", dbIdMap[resource]);
-            
+            //console.log("KEY: ", dbIdMap[resource]);
+
             response.forEach(element => {
                 if (element[key]){
                     element["id"] = element[key];
@@ -44,7 +44,7 @@ export default {
                 delete element[key];
             });
             result["rows"] = response;
-            console.log("Result, KEY: ", result, key);
+            //console.log("Result, KEY: ", result, key);
             return result;
         }
         
@@ -60,11 +60,29 @@ export default {
         })),
 
     getMany: (resource, params) => {
+        function parseID(response){
+            let result = {};
+
+            let key = dbIdMap[resource];
+
+            //console.log("KEY: ", dbIdMap[resource]);
+
+            response.forEach(element => {
+                if (element[key]){
+                    element["id"] = element[key];
+                }
+                result["count"] = element["id"];
+                delete element[key];
+            });
+            result["rows"] = response;
+            //console.log("Result, KEY: ", result, key);
+            return result;
+        }
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        return httpClient(url).then(({ json }) => ({ data: json }));
+        return httpClient(url).then(({ json }) => ({ data: parseID(json)["rows"] }));
     },
 
     getManyReference: (resource, params) => {

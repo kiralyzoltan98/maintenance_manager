@@ -22,7 +22,6 @@ export const UserList = props => (
             <TextField source="QualificationId" />
             <TextField source="Type" />
         </Datagrid>
-        
     </List>
 );
 
@@ -31,7 +30,9 @@ export const UserCreate = props => (
         <SimpleForm>
             <TextInput source="userName" />
             <TextInput source="password" />
-            <TextInput multiline source="qualificationId" />
+            <ReferenceInput source="mainCategoryId" reference="qualifications">
+                <SelectInput optionText="Qualification" />
+            </ReferenceInput>
             <TextInput source="type" />
         </SimpleForm>
     </Create>
@@ -42,7 +43,9 @@ export const UserEdit = props => (
         <SimpleForm>
             <TextInput source="userName" />
             <TextInput source="password" />
-            <TextInput multiline source="qualificationId" />
+            <ReferenceInput source="mainCategoryId" reference="qualifications">
+                <SelectInput optionText="Qualification" />
+            </ReferenceInput>
             <TextInput source="type" />
         </SimpleForm>
     </Create>
