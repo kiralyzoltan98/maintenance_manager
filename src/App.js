@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Admin, Resource } from 'react-admin';
 import {PostCreate, PostList, PostEdit} from './posts';
-import { UserList, UserCreate } from './users';
+import {UserList, UserCreate, UserEdit} from './users';
 import { DeviceList, DeviceCreate } from './devices';
 import {TaksList, TaskCreate, TaskList} from './tasks';
 import jsonServerProvider from 'ra-data-json-server';
@@ -23,7 +23,7 @@ import {CategoryList, CategoryCreate} from "./categories";
 const App = () => (
     <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={DataProvider} >
         <Resource name="tasks" list={TaskList} edit={PostEdit} create={TaskCreate} icon={PostIcon}/>
-        <Resource name="users" list={UserList} create={UserCreate} icon={UserIcon}/>
+        <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon}/>
         <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>

@@ -12,15 +12,17 @@ import {
     SelectInput,
     TextInput,
 } from 'react-admin';
+import { ShowButton } from 'react-admin';
 
 export const TaskList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <TextField source="UserName" />
-            <TextField source="Password" />
+            <TextField source="MaintenanceId" />
+            <TextField source="UserId" />
             <TextField source="QualificationId" />
             <TextField source="Type" />
+            <TextField source="Date" />
+            <ShowButton label="SHOW" />
         </Datagrid>
 
     </List>
@@ -29,10 +31,15 @@ export const TaskList = props => (
 export const TaskCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="userName" />
-            <TextInput source="password" />
-            <TextInput multiline source="qualificationId" />
-            <TextInput source="type" />
+            <ReferenceInput source="id" reference="users">
+                <SelectInput optionText="id" />
+                <SelectInput optionText="userName" />
+            </ReferenceInput>
+            <ReferenceInput source="mainCategoryId" reference="qualifications">
+                <SelectInput optionText="Qualification" />
+            </ReferenceInput>
+            <TextField source="Type" />
+            <TextField source="Date" />
         </SimpleForm>
     </Create>
 );

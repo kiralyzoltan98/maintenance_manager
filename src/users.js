@@ -36,3 +36,14 @@ export const UserCreate = props => (
         </SimpleForm>
     </Create>
 );
+
+export const UserEdit = props => (
+    <Create {...props}>
+        <SimpleForm>
+            <TextInput source="userName" />
+            <TextInput source="password" />
+            <TextInput multiline source="qualificationId" />
+            <TextInput source="type" />
+        </SimpleForm>
+    </Create>
+);
