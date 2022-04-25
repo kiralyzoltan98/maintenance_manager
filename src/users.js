@@ -29,8 +29,8 @@ export const UserCreate = props => (
         <SimpleForm>
             <TextInput source="userName" />
             <TextInput source="password" />
-            <ReferenceInput source="QualificationId" reference="qualifications">
-                <SelectInput optionText="Qualification" />
+            <ReferenceInput source="qualificationId" reference="qualifications">
+                <SelectInput optionText="qualification" />
             </ReferenceInput>
             <TextInput source="type" />
         </SimpleForm>

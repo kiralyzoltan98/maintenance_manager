@@ -31,11 +31,11 @@ export const TaskList = props => (
 export const TaskCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput source="UserName" reference="users">
-                <SelectInput optionText="UserName" />
+            <ReferenceInput source="username" reference="users">
+                <SelectInput optionText="username" />
             </ReferenceInput>
-            <ReferenceInput source="QualificationId" reference="qualifications">
-                <SelectInput optionText="Qualification" />
+            <ReferenceInput source="qualificationId" reference="qualifications">
+                <SelectInput optionText="qualification" />
             </ReferenceInput>
             <TextField source="Type" />
             <TextField source="Date" />

@@ -28,10 +28,10 @@ export const QualificationCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <ReferenceInput source="mainCategoryId" reference="qualifications">
-                <SelectInput optionText="Qualification" />
+                <SelectInput optionText="qualification" />
             </ReferenceInput>
             <ReferenceInput source="subCategoryId" reference="qualifications">
-                <SelectInput optionText="Qualification" />
+                <SelectInput optionText="qualification" />
             </ReferenceInput>
         </SimpleForm>
     </Create>
