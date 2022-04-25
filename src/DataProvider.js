@@ -12,7 +12,7 @@ const dbIdMap = {
     users: "userId",
     qualifications: "qualificationId",
     devicecategories: "deviceCategoryId",
-    tasks: "MaintenanceId",
+    tasks: "maintenanceId",
 };
 
 export default {
