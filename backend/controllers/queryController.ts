@@ -54,10 +54,11 @@ export async function get_all_maintenances() {
 }
 
 export async function get_all_tasks() { 
-    return await mySqlClient.execute(`SELECT MaintenanceId, UserName, Qualification, Type, Date
-                                      FROM Task, User, Qualification
-                                      WHERE User.UserId = Task.UserId AND
-                                      Qualification.QualificationId = User.QualificationId `);
+    return await mySqlClient.execute(`SELECT User.userName, Qualification.qualification, Maintenance.type, Task.date, Maintenance.status
+    FROM Task, User, Qualification, Maintenance
+    WHERE User.userId = Task.userId AND
+    Qualification.qualificationId = User.qualificationId AND
+    Task.maintenanceId = Maintenance.maintenanceId`);
 }
 
 export async function get_task_by_user_id(userid : number){
