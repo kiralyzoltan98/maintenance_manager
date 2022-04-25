@@ -32,7 +32,9 @@ export async function get_all_users() {
 }
 
 export async function return_devices() { 
-        return await mySqlClient.execute(`SELECT * FROM Device`);   
+        return await mySqlClient.execute(`SELECT Device.deviceId, DeviceCategory.deviceCategoryName, Device.deviceName, Device.location 
+        FROM Device, DeviceCategory
+        WHERE Device.categoryId = DeviceCategory.deviceCategoryId`);   
 }
 
 export async function get_qualifications() { 
