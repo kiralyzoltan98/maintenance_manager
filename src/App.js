@@ -19,6 +19,7 @@ import DataProvider from "./DataProvider";
 import {QualificationList, QualificationCreate} from "./qualifications";
 import {CategoryList, CategoryCreate} from "./categories";
 import {MaintanenceList, MaintanenceCreate} from "./maintenances";
+import {PeriodicCreate} from "./periodic-task";
 //const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 const App = () => (
@@ -27,9 +28,9 @@ const App = () => (
         <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon}/>
-        <Resource name="maintenances" list={MaintanenceList} create={MaintanenceCreate}/>
+        <div style={{display:'none'}}><Resource name="maintenances" list={MaintanenceList} create={MaintanenceCreate}/></div>
         <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
-        <Resource name="periodic" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
+        <Resource name="periodic-task" create={PeriodicCreate} icon={CategoryIcon}/>
     </Admin>
 );
 
