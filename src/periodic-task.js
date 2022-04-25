@@ -11,15 +11,18 @@ export const PeriodicList = props => (
         </Datagrid>
     </List>
 );
+/**
+ *
+ * <ReferenceInput source="periodtype" reference="periodic-task">
+ *    <SelectInput optionText="periodtype" />
+ * </ReferenceInput>
+ */
 
 export const PeriodicCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput source="categoryId" reference="devicecategories">
-                <SelectInput optionText="deviceCategoryName" />
-            </ReferenceInput>
-            <TextInput source="deviceName" />
-            <TextInput source="location" />
+            <TextInput source="periodtype" />
+            <TextInput source="period" />
         </SimpleForm>
     </Create>
 );

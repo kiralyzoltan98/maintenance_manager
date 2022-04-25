@@ -135,6 +135,9 @@ export default {
         if(resource === "devicecategories"){
             urlParam = `devicecategory`;
         }
+        if(resource === "periodic-task"){
+            urlParam = `periodic-task`;
+        }
 
         const url = `${apiUrl}/${urlParam}`;
         params = params.data;

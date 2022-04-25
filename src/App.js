@@ -13,6 +13,7 @@ import UserIcon from '@material-ui/icons/Group';
 import LaptopIcon from '@material-ui/icons/Laptop';
 import CategoryIcon from '@material-ui/icons/Category';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 import DataProvider from "./DataProvider";
 import {QualificationList, QualificationCreate} from "./qualifications";
