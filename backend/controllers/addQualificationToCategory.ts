@@ -17,7 +17,7 @@ export async function addQualificationToCategory({ request, response }: { reques
       const qualifications = (await get_qualifications()).rows;
       let exists = false;
       qualifications?.forEach( qualification => {
-        if(qualification.QualificationId === parseInt(qualificationId)){
+        if(qualification.qualificationId === parseInt(qualificationId)){
           exists = true;
         }
       })
@@ -28,7 +28,7 @@ export async function addQualificationToCategory({ request, response }: { reques
       const qualifications = (await get_device_categories()).rows;
       let exists = false;
       qualifications?.forEach( qualification => {
-        if(qualification.DeviceCategoryId === parseInt(deviceCategoryId)){
+        if(qualification.deviceCategoryId === parseInt(deviceCategoryId)){
           exists = true;
         }
       })

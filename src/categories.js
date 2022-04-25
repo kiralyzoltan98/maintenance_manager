@@ -17,11 +17,11 @@ export const CategoryList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="DeviceCategoryName" />
-            <TextField source="Description" />
-            <TextField source="QualificationId" />
-            <TextField source="Intervall" />
-            <TextField source="Time" />
+            <TextField source="deviceCategoryName" />
+            <TextField source="description" />
+            <TextField source="dualificationId" />
+            <TextField source="intervall" />
+            <TextField source="time" />
         </Datagrid>
 
     </List>

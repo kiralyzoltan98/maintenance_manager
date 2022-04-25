@@ -21,6 +21,7 @@ import { getAllMaintenances } from '../controllers/getAllMaintenances.ts';
 import { getAllTasks } from '../controllers/getAllTasks.ts';
 import { addPeriodicTask } from '../controllers/addPeriodicTask.ts';
 import { updateDeviceCategories } from '../controllers/updateDeviceCategories.ts';
+import { getUsers } from '../controllers/getUsers.ts'
 
 const router = new Router();
 
@@ -37,7 +38,8 @@ router
     .post("/periodic-task", addPeriodicTask)
 
     .get("/devices", getAllDevice)
-    .get("/users", getAllUsers)
+    //.get("/userids", getAllUsers)
+    .get("/users", getUsers)
     .get("/qualifications", getAllQualifications)
     .get("/devicecategories", getAllDeviceCategories)
     .get("/tasks", getAllTasks)

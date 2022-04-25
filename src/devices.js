@@ -17,8 +17,9 @@ export const DeviceList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="DeviceName" />
-            <TextField source="Location" />
+            <TextField source="deviceCategoryName" />
+            <TextField source="deviceName" />
+            <TextField source="location" />
         </Datagrid>
         
     </List>
@@ -27,7 +28,9 @@ export const DeviceList = props => (
 export const DeviceCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="categoryId" />
+            <ReferenceInput source="categoryId" reference="devicecategories">
+                <SelectInput optionText="deviceCategoryName" />
+            </ReferenceInput>
             <TextInput source="deviceName" />
             <TextInput source="location" />
         </SimpleForm>

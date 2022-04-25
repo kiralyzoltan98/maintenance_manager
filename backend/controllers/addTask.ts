@@ -46,7 +46,7 @@ export async function addTask ({ request, response }: { request: any; response: 
       const users = (await get_qualifications()).rows;
       let exists = false;
       users?.forEach( (qualification) => {
-        if(qualification.QualificationId === parseInt(qualificationId)){
+        if(qualification.qualificationId === parseInt(qualificationId)){
           exists = true;
         }
       })

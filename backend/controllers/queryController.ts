@@ -26,8 +26,15 @@ export async function search( params: number) {
     }
 }
 
+export async function get_all_users() {
+    return await mySqlClient.execute(`SELECT userId, username, qualification, type FROM User, Qualification 
+                                     WHERE Qualification.qualificationId = User.qualificationId`);
+}
+
 export async function return_devices() { 
-        return await mySqlClient.execute(`SELECT * FROM Device`);   
+        return await mySqlClient.execute(`SELECT Device.deviceId, DeviceCategory.deviceCategoryName, Device.deviceName, Device.location 
+        FROM Device, DeviceCategory
+        WHERE Device.categoryId = DeviceCategory.deviceCategoryId`);   
 }
 
 export async function get_qualifications() { 
@@ -47,10 +54,11 @@ export async function get_all_maintenances() {
 }
 
 export async function get_all_tasks() { 
-    return await mySqlClient.execute(`SELECT MaintenanceId, UserName, Qualification, Type, Date
-                                      FROM Task, User, Qualification
-                                      WHERE User.UserId = Task.UserId AND
-                                      Qualification.QualificationId = User.QualificationId `);
+    return await mySqlClient.execute(`SELECT Task.maintenanceId, User.userName, Qualification.qualification, Maintenance.type, Task.date, Maintenance.status
+    FROM Task, User, Qualification, Maintenance
+    WHERE User.userId = Task.userId AND
+    Qualification.qualificationId = User.qualificationId AND
+    Task.maintenanceId = Maintenance.maintenanceId`);
 }
 
 export async function get_task_by_user_id(userid : number){

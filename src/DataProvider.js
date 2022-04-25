@@ -8,10 +8,10 @@ import {element} from "prop-types";
 const apiUrl = `http://localhost:8000`;
 const httpClient = fetchUtils.fetchJson;
 const dbIdMap = {
-    devices: "DeviceId",
-    users: "UserId",
-    qualifications: "QualificationId",
-    devicecategories: "DeviceCategoryId",
+    devices: "deviceId",
+    users: "userId",
+    qualifications: "qualificationId",
+    devicecategories: "deviceCategoryId",
     tasks: "MaintenanceId",
 };
 
