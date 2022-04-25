@@ -17,8 +17,9 @@ export const DeviceList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="DeviceName" />
-            <TextField source="Location" />
+            <TextField source="categoryId" />
+            <TextField source="deviceName" />
+            <TextField source="location" />
         </Datagrid>
         
     </List>

@@ -17,8 +17,8 @@ export const QualificationList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="Qualification" />
-            <TextField source="QualificationDescription" />
+            <TextField source="qualification" />
+            <TextField source="qualificationDescription" />
         </Datagrid>
 
     </List>

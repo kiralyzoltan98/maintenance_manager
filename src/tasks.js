@@ -17,7 +17,7 @@ import { ShowButton } from 'react-admin';
 export const TaskList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="MaintenanceId" />
+            <TextField source="id" />
             <TextField source="UserName" />
             <TextField source="Qualification" />
             <TextField source="Type" />
