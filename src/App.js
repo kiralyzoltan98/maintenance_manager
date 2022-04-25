@@ -26,6 +26,10 @@ const App = () => (
         <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon}/>
+        <div style={{display:'none'}}>
+            <Resource name="maintanences" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon} />
+        </div>
+        
         <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
     </Admin>
 );
