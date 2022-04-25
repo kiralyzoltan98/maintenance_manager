@@ -113,8 +113,8 @@ export const insert_devicecategory = async ({  deviceCategoryName, description, 
     ]);
 }
 
-export const insert_task = async ({  maintenanceId, userId, qualificationId, date }: {maintenanceId: number, userId: number, qualificationId: number, date: string }) => {
-    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date) VALUES(?,?,?,?)`, [
+export const insert_task = async ({  maintenanceId, userId, qualificationId, date, description }: {maintenanceId: number, userId: number, qualificationId: number, date: string, description : string }) => {
+    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date, Description) VALUES(?,?,?,?)`, [
         maintenanceId, userId, qualificationId, date
     ]);
 }
@@ -125,6 +125,11 @@ export const delete_user_by_id = async ({ userId }: {userId : number }) => {
     ]);
 }
 
+export const update_device_category = async ({ qualificationId, deviceCategoryName, description, intervall, normtime }: { qualificationId: number, deviceCategoryName: string, description : string, intervall : number, normtime : number }) => {
+    return await mySqlClient.execute(`UPDATE DeviceCategory SET QualificationId = ? WHERE DeviceCategoryId = ?`, [
+        qualificationId, deviceCategoryName, description, intervall, normtime
+    ]);
+}
 
 /* export const delete_user = async (ctx: Context) => {
     let result = await mySqlClient.execute(`delete from users where ?? = ?`, ["id", 1]);

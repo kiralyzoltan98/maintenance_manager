@@ -7,7 +7,8 @@ export async function addTask ({ request, response }: { request: any; response: 
       maintenanceId: body.maintenanceId,
       userId: body.userId,
       qualificationId: body.qualificationId,
-      date: body.date
+      date: body.date,
+      description: body.description
     }
 
     let status = 400;
