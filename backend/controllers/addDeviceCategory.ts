@@ -8,6 +8,7 @@ export async function addDeviceCategory ({ request, response }: { request: any; 
         deviceCategoryName: body.deviceCategoryName,
         description: body.description,
         intervall: body.intervall,
+        time: body.time,
         normtime: body.normtime
     }
 

@@ -19,6 +19,7 @@ import { addQualificationToUser } from '../controllers/addQualificationToUser.ts
 import { addTask } from '../controllers/addTask.ts';
 import { getAllMaintenances } from '../controllers/getAllMaintenances.ts';
 import { getAllTasks } from '../controllers/getAllTasks.ts';
+import { updateDeviceCategories } from '../controllers/updateDeviceCategories.ts';
 
 const router = new Router();
 
@@ -41,6 +42,8 @@ router
     .get("/task-by-id", getTaskByUserId)
     .get("/categories", getAllCategories)
     .get("/maintenances", getAllMaintenances)
+
+    .put("/devicecategories", updateDeviceCategories)
 
     .delete("/user", deleteUserById)
     

@@ -3,5 +3,6 @@ export interface DeviceCategoryInterface {
     deviceCategoryName: string,
     description: string,
     intervall: string,
+    time: string,
     normtime: string
 }

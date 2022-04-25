@@ -1,5 +1,6 @@
 import { Context } from "https://deno.land/x/abc@v1.3.2/mod.ts";
 import mySqlClient from "../database/mysql.ts"
+import { DeviceCategoryInterface } from '../models/DeviceCategoryInterface.ts';
 
 /* export const get_all_users = async ({ params, response }: { params: {id: number}; response: any }) => {
     const username = "bomate";
@@ -61,9 +62,6 @@ export async function get_task_by_user_id(userid : number){
     ]);
 }
 
-
-//TODO
-//Table names to lowercase!!!
 export const insert_user = async ({ userName, password, qualificationId, type }: { userName: string; password: string, qualificationId: number, type: string }) => {
     return await mySqlClient.execute(`INSERT INTO User(UserName, Password, QualificationId, Type) VALUES(?,?,?,?)`, [
         userName, password, qualificationId, type
@@ -125,9 +123,9 @@ export const delete_user_by_id = async ({ userId }: {userId : number }) => {
     ]);
 }
 
-export const update_device_category = async ({ qualificationId, deviceCategoryName, description, intervall, normtime }: { qualificationId: number, deviceCategoryName: string, description : string, intervall : number, normtime : number }) => {
-    return await mySqlClient.execute(`UPDATE DeviceCategory SET QualificationId = ? WHERE DeviceCategoryId = ?`, [
-        qualificationId, deviceCategoryName, description, intervall, normtime
+export const update_device_category = async ({ deviceCategoryId, deviceCategoryName, description, intervall, time, normtime }: DeviceCategoryInterface ) => {
+    return await mySqlClient.execute(`UPDATE DeviceCategory SET deviceCategoryName = ?, description = ?, intervall = ?, time = ?, normtime = ? WHERE DeviceCategoryId = ?`, [
+        deviceCategoryName, description, intervall, time, normtime, deviceCategoryId
     ]);
 }
 
