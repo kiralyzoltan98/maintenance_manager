@@ -54,7 +54,7 @@ export async function get_all_maintenances() {
 }
 
 export async function get_all_tasks() { 
-    return await mySqlClient.execute(`SELECT User.userName, Qualification.qualification, Maintenance.type, Task.date, Maintenance.status
+    return await mySqlClient.execute(`SELECT Task.maintenanceId User.userName, Qualification.qualification, Maintenance.type, Task.date, Maintenance.status
     FROM Task, User, Qualification, Maintenance
     WHERE User.userId = Task.userId AND
     Qualification.qualificationId = User.qualificationId AND
