@@ -18,6 +18,7 @@ import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import DataProvider from "./DataProvider";
 import {QualificationList, QualificationCreate} from "./qualifications";
 import {CategoryList, CategoryCreate} from "./categories";
+import {MaintanenceList, MaintanenceCreate} from "./maintenances";
 //const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 const App = () => (
@@ -26,11 +27,9 @@ const App = () => (
         <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon}/>
-        <div style={{display:'none'}}>
-            <Resource name="maintanences" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon} />
-        </div>
-        
+        <Resource name="maintenances" list={MaintanenceList} create={MaintanenceCreate}/>
         <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
+        <Resource name="periodic" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
     </Admin>
 );
 

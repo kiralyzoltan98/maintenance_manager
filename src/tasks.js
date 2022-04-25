@@ -37,6 +37,9 @@ export const TaskCreate = props => (
             <ReferenceInput source="qualificationId" reference="qualifications">
                 <SelectInput optionText="qualification" />
             </ReferenceInput>
+            <ReferenceInput source="maintenanceId" reference="maintenances">
+                <SelectInput optionText="maintenanceName" />
+            </ReferenceInput>
             <TextField source="Type" />
             <TextField source="Date" />
         </SimpleForm>

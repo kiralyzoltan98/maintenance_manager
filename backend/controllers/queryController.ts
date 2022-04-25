@@ -25,7 +25,7 @@ export async function search( params: number) {
         return await mySqlClient.execute(`SELECT * FROM User`);   
     }
 }
-
+const szaft = "";
 export async function get_all_users() {
     return await mySqlClient.execute(`SELECT userId, username, qualification, type FROM User, Qualification 
                                      WHERE Qualification.qualificationId = User.qualificationId`);
