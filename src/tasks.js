@@ -1,6 +1,6 @@
 // in src/users.js
 import * as React from "react";
-import { List, Datagrid, TextField, EmailField } from 'react-admin';
+import { Show, SimpleShowLayout, DateField, List, Datagrid, TextField, EmailField } from 'react-admin';
 import MyUrlField from './MyUrlField';
 import {
     ReferenceField,
@@ -34,11 +34,22 @@ export const TaskCreate = props => (
             <ReferenceInput source="UserName" reference="users">
                 <SelectInput optionText="UserName" />
             </ReferenceInput>
-            <ReferenceInput source="mainCategoryId" reference="qualifications">
+            <ReferenceInput source="QualificationId" reference="qualifications">
                 <SelectInput optionText="Qualification" />
             </ReferenceInput>
             <TextField source="Type" />
             <TextField source="Date" />
         </SimpleForm>
     </Create>
+);
+
+export const TsakShow = () => (
+    <Show>
+        <SimpleShowLayout>
+            <TextField source="title" />
+            <TextField source="teaser" />
+            <TextField source="body" />
+            <DateField label="Publication date" source="published_at" />
+        </SimpleShowLayout>
+    </Show>
 );
