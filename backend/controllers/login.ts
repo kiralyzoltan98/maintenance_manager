@@ -19,7 +19,7 @@ export async function login({ request, response }: { request: any; response: any
     let isCorrectLogin = false;
     let loggedInUser;
     users?.forEach(user => {
-        if(user.UserName === userName && user.Password === password){
+        if(user.userName === userName && user.password === password){
             isCorrectLogin = true;
             loggedInUser = user;
         }
