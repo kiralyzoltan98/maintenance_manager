@@ -29,7 +29,7 @@ const App = () => (
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon}/>
         <Resource name="maintenances" list={MaintanenceList} create={MaintanenceCreate}/>
         <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
-        <Resource name="periodic-task" list={PeriodicList} create={PeriodicCreate} icon={CategoryIcon}/>
+        <Resource name="periodic-task" list={PeriodicList} create={PeriodicCreate} icon={AccessTimeIcon}/>
     </Admin>
 );
 
