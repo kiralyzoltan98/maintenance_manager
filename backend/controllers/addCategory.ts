@@ -11,14 +11,12 @@ export async function addCategory ({ request, response }: { request: any; respon
         mainCategoryId: body.mainCategoryId,
         subCategoryId: body.subCategoryId
     }
-    console.log({ body })
-    console.log(categoryInfo.mainCategoryId, categoryInfo.subCategoryId)
 
     const isDeviceCategoryExist = async ( deviceCategoryId : number ) =>{
       const categories = (await get_device_categories()).rows;
       let exists = false;
       categories?.forEach( category => {
-        if(category.DeviceCategoryId === deviceCategoryId){
+        if(category.deviceCategoryId === deviceCategoryId){
           exists = true;
         }
       })

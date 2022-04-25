@@ -26,6 +26,11 @@ export async function search( params: number) {
     }
 }
 
+export async function get_all_users() {
+    return await mySqlClient.execute(`SELECT username, qualification, type FROM User, Qualification 
+                                     WHERE Qualification.qualificationId = User.qualificationId`);
+}
+
 export async function return_devices() { 
         return await mySqlClient.execute(`SELECT * FROM Device`);   
 }
