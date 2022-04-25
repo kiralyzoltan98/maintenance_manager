@@ -44,7 +44,7 @@ export default {
                 delete element[key];
             });
             result["rows"] = response;
-            //console.log("Result, KEY: ", result, key);
+            console.log("Result, KEY: ", result, key);
             return result;
         }
         

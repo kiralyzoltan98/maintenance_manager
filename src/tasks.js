@@ -18,8 +18,8 @@ export const TaskList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="MaintenanceId" />
-            <TextField source="UserId" />
-            <TextField source="QualificationId" />
+            <TextField source="UserName" />
+            <TextField source="Qualification" />
             <TextField source="Type" />
             <TextField source="Date" />
             <ShowButton label="SHOW" />
