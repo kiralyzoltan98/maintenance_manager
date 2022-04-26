@@ -16,16 +16,13 @@ export async function addMaintenance ({ request, response }: { request: any; res
       deviceId: body.deviceId
     }
 
-    const hasValues = await (maintenanceInfo.maintenanceName.length != 0 && maintenanceInfo.type.length != 0 && maintenanceInfo.deadline.toString().length != 0 
-                        && maintenanceInfo.priority.toString().length != 0 && maintenanceInfo.status.toString().length != 0 && maintenanceInfo.ignoreMessage.length != 0 
-                        && maintenanceInfo.deviceId.toString().length != 0);
+  
 
-    if (hasValues) {
       status = 200;
       response.body = await insert_maintenance(maintenanceInfo);
-    } else {
-      response.body = { "error": "Invalid request!" };
-    }
+
+      //response.body = { "error": "Invalid request!" };
+    
 
     response.status = status;
 }
