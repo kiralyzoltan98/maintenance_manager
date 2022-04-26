@@ -138,6 +138,9 @@ export default {
         if(resource === "periodic-task"){
             urlParam = `periodic-task`;
         }
+        if(resource === "maintenances"){
+            urlParam = `maintenance`;
+        }
 
         const url = `${apiUrl}/${urlParam}`;
         params = params.data;

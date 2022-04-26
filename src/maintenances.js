@@ -11,6 +11,7 @@ import {
     ReferenceInput,
     SelectInput,
     TextInput,
+    DateInput,
 } from 'react-admin';
 
 export const MaintanenceList = props => (
@@ -26,11 +27,14 @@ export const MaintanenceList = props => (
 export const MaintanenceCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput source="categoryId" reference="devicecategories">
-                <SelectInput optionText="deviceCategoryName" />
+            <ReferenceInput source="deviceName" reference="devices">
+                <SelectInput optionText="deviceName" />
             </ReferenceInput>
-            <TextInput source="deviceName" />
-            <TextInput source="location" />
+            <TextInput source="type" />
+            <DateInput source="deadline" />
+            <TextInput source="priority" />
+            <TextInput source="status" />
+            <TextInput source="ignoreMessage" />
         </SimpleForm>
     </Create>
 );
