@@ -2,7 +2,7 @@ import mySqlClient from '../database/mysql.ts';
 import { insert_maintenance } from './queryController.ts';
 import { MaintenanceInterface } from '../models/MaintenanceInterface.ts';
 
-export async function addUser ({ request, response }: { request: any; response: any }) {
+export async function addMaintenance ({ request, response }: { request: any; response: any }) {
     const body = await request.body().value;
     let status = 400;
 
