@@ -141,6 +141,9 @@ export default {
         if(resource === "maintenances"){
             urlParam = `maintenance`;
         }
+        if(resource === "tasks"){
+            urlParam = `task`;
+        }
 
         const url = `${apiUrl}/${urlParam}`;
         params = params.data;
