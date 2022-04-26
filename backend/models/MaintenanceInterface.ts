@@ -1,8 +1,9 @@
 export interface MaintenanceInterface{
-    maintenanceId: number,
+    maintenanceId?: number,
+    maintenanceName: string,
     type: string,
     deadline: string,
-    prioriry: number,
+    priority: number,
     status: string,
     ignoreMessage: string,
     deviceId: number
