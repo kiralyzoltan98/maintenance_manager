@@ -1,7 +1,13 @@
 import { insert_task, get_all_maintenances, search, get_qualifications } from './queryController.ts';
+import {everyMinute, daily, monthly, weekly, hourly, stop} from 'https://deno.land/x/deno_cron/cron.ts';
 
 export async function addTask ({ request, response }: { request: any; response: any }) {
     const body = await request.body().value;
+
+    const periodicTaskInfo = {
+      periodtype: body.periodtype, // hourly, daily, weekly, monthly
+      period: body.period // which day/month e.g: 2 = February
+  }
 
     const taskInfo = {
       maintenanceId: body.maintenanceId,
@@ -61,7 +67,49 @@ export async function addTask ({ request, response }: { request: any; response: 
     if (hasValues && /*isMaintenanceIdExistHandle &&*/ isUserIdExistHandle && isQualificationExistHandle) {
       response.body = await insert_task(taskInfo);
       status = 200;
-    }/*else if(!isMaintenanceIdExistHandle){
+    }else  if(typeof periodicTaskInfo.period 
+      !== 'undefined' && typeof periodicTaskInfo.periodtype !== 'undefined'){
+        switch (periodicTaskInfo.periodtype){
+          case "minute" : {
+              everyMinute(async () => {
+                  response.body = await insert_task(taskInfo);
+              });
+          }
+          break;
+          case "hourly" : {
+              hourly(async () => {
+                  response.body = await insert_task(taskInfo);
+              });
+          }
+          break;
+          case "daily" : {
+              daily(async () => {
+                  response.body = await insert_task(taskInfo);
+              });
+          }
+          break;
+          case "weekly" : {
+              weekly(async () => {
+                  response.body = await insert_task(taskInfo);
+              },periodicTaskInfo.period);
+          }
+          break;
+          case "monthly" :{
+              monthly(async () => {
+                  response.body = await insert_task(taskInfo);
+              },periodicTaskInfo.period);
+
+          }
+          break;
+          default : {
+              response.body = {"error" : "Wrong period type, try hourly/daily/weekly/monthly."}
+          }
+          break;
+      }
+      status = 200;
+      
+    }
+    /*else if(!isMaintenanceIdExistHandle){
       response.body = { "error": "MaintenanceId does not exists!" };
     }*/else if(!isUserIdExistHandle){
       response.body = { "error": "UserId does not exists!" };

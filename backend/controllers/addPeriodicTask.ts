@@ -5,7 +5,7 @@ export async function addPeriodicTask ({ request, response }: { request: any; re
     const body = await request.body().value;
 
     const periodicTaskInfo = {
-        periodtype: body.periodtype, // hourly,daily, weekly, monthly
+        periodtype: body.periodtype, // hourly, daily, weekly, monthly
         period: body.period // which day/month e.g: 2 = February
     }
 
