@@ -27,7 +27,7 @@ export const MaintanenceList = props => (
 export const MaintanenceCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput source="deviceName" reference="devices">
+            <ReferenceInput source="deviceId" reference="devices">
                 <SelectInput optionText="deviceName" />
             </ReferenceInput>
             <TextInput source="type" />
