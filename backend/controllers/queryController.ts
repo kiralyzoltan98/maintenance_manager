@@ -1,6 +1,7 @@
 import { Context } from "https://deno.land/x/abc@v1.3.2/mod.ts";
 import mySqlClient from "../database/mysql.ts"
 import { DeviceCategoryInterface } from '../models/DeviceCategoryInterface.ts';
+import { MaintenanceInterface } from '../models/MaintenanceInterface.ts';
 
 /* export const get_all_users = async ({ params, response }: { params: {id: number}; response: any }) => {
     const username = "bomate";
@@ -116,6 +117,12 @@ export const insert_category = async ({  mainCategoryId, subCategoryId }: { main
 export const insert_devicecategory = async ({  deviceCategoryName, description, intervall, normtime }: {deviceCategoryName: string, description: string, intervall: string, normtime: string }) => {
     return await mySqlClient.execute(`INSERT INTO DeviceCategory(DeviceCategoryName, description, intervall, time) VALUES(?,?,?,?)`, [
         deviceCategoryName, description, intervall, normtime
+    ]);
+}
+
+export const insert_maintenance = async ({ maintenanceName, type, deadline, priority, status, ignoreMessage, deviceId }: MaintenanceInterface) => {
+    return await mySqlClient.execute(`INSERT INTO Maintenance(maintenanceName, type, deadline, priority, status, ignoreMessage, deviceId) VALUES(?,?,?,?,?,?,?,?)`, [
+        maintenanceName, type, deadline, priority, status, ignoreMessage, deviceId
     ]);
 }
 
