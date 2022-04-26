@@ -127,8 +127,8 @@ export const insert_maintenance = async ({ maintenanceName, type, deadline, prio
 }
 
 export const insert_task = async ({  maintenanceId, userId, qualificationId, date, description }: {maintenanceId: number, userId: number, qualificationId: number, date: string, description : string }) => {
-    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date, Description) VALUES(?,?,?,?)`, [
-        maintenanceId, userId, qualificationId, date
+    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date, Description) VALUES(?,?,?,?,?)`, [
+        maintenanceId, userId, qualificationId, date, description
     ]);
 }
 
