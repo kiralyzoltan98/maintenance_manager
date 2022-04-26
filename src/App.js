@@ -13,11 +13,13 @@ import UserIcon from '@material-ui/icons/Group';
 import LaptopIcon from '@material-ui/icons/Laptop';
 import CategoryIcon from '@material-ui/icons/Category';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
-
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 import DataProvider from "./DataProvider";
 import {QualificationList, QualificationCreate} from "./qualifications";
 import {CategoryList, CategoryCreate} from "./categories";
+import {MaintanenceList, MaintanenceCreate} from "./maintenances";
+import {PeriodicCreate, PeriodicList} from "./periodic-task";
 //const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 const App = () => (
@@ -26,7 +28,9 @@ const App = () => (
         <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} icon={UserIcon}/>
         <Resource name="devices" list={DeviceList} create={DeviceCreate} icon={LaptopIcon}/>
         <Resource name="qualifications" list={QualificationList} create={QualificationCreate} icon={AssignmentTurnedInIcon}/>
+        <Resource name="maintenances" list={MaintanenceList} create={MaintanenceCreate}/>
         <Resource name="devicecategories" list={CategoryList} create={CategoryCreate} icon={CategoryIcon}/>
+        <Resource name="periodic-task" list={PeriodicList} create={PeriodicCreate} icon={AccessTimeIcon}/>
     </Admin>
 );
 

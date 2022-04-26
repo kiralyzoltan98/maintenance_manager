@@ -17,8 +17,8 @@ export const QualificationList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="Qualification" />
-            <TextField source="QualificationDescription" />
+            <TextField source="qualification" />
+            <TextField source="qualificationDescription" />
         </Datagrid>
 
     </List>
@@ -28,10 +28,10 @@ export const QualificationCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <ReferenceInput source="mainCategoryId" reference="qualifications">
-                <SelectInput optionText="Qualification" />
+                <SelectInput optionText="qualification" />
             </ReferenceInput>
             <ReferenceInput source="subCategoryId" reference="qualifications">
-                <SelectInput optionText="Qualification" />
+                <SelectInput optionText="qualification" />
             </ReferenceInput>
         </SimpleForm>
     </Create>

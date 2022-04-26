@@ -13,19 +13,17 @@ import {
     TextInput,
 } from 'react-admin';
 
-export const DeviceList = props => (
+export const MaintanenceList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="deviceCategoryName" />
-            <TextField source="deviceName" />
-            <TextField source="location" />
+            <TextField source="maintenanceName" />
         </Datagrid>
-        
+
     </List>
 );
 
-export const DeviceCreate = props => (
+export const MaintanenceCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <ReferenceInput source="categoryId" reference="devicecategories">

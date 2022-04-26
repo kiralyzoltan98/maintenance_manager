@@ -11,17 +11,18 @@ import {
     ReferenceInput,
     SelectInput,
     TextInput,
+    DateInput,
 } from 'react-admin';
 import { ShowButton } from 'react-admin';
 
 export const TaskList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="MaintenanceId" />
-            <TextField source="UserName" />
-            <TextField source="Qualification" />
-            <TextField source="Type" />
-            <TextField source="Date" />
+            <TextField source="id" />
+            <TextField source="userName" />
+            <TextField source="qualification" />
+            <TextField source="type" />
+            <DateField source="date" />
             <ShowButton label="SHOW" />
         </Datagrid>
 
@@ -31,14 +32,17 @@ export const TaskList = props => (
 export const TaskCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <ReferenceInput source="UserName" reference="users">
-                <SelectInput optionText="UserName" />
+            <ReferenceInput source="username" reference="users">
+                <SelectInput optionText="username" />
             </ReferenceInput>
-            <ReferenceInput source="QualificationId" reference="qualifications">
-                <SelectInput optionText="Qualification" />
+            <ReferenceInput source="qualificationId" reference="qualifications">
+                <SelectInput optionText="qualification" />
             </ReferenceInput>
-            <TextField source="Type" />
-            <TextField source="Date" />
+            <ReferenceInput source="maintenanceId" reference="maintenances">
+                <SelectInput optionText="maintenanceName" />
+            </ReferenceInput>
+            <DateInput source="date" />
+            <TextInput source="description" />
         </SimpleForm>
     </Create>
 );
