@@ -121,8 +121,10 @@ export const insert_devicecategory = async ({  deviceCategoryName, description, 
 }
 
 export const insert_maintenance = async ({ maintenanceName, type, deadline, priority, status, ignoreMessage, deviceId }: MaintenanceInterface) => {
-    return await mySqlClient.execute(`INSERT INTO Maintenance(maintenanceName, type, deadline, priority, status, ignoreMessage, deviceId) VALUES(?,?,?,?,?,?,?)`, [
-        maintenanceName, type, deadline, priority, status, ignoreMessage, deviceId
+    return await mySqlClient.execute(`INSERT INTO Maintenance(
+        type, deadline, priority, status, ignoreMessage, deviceId, maintenanceName)
+        VALUES(?,?,?,?,?,?,?)`, [
+        type, deadline, priority, status, ignoreMessage, deviceId, maintenanceName
     ]);
 }
 

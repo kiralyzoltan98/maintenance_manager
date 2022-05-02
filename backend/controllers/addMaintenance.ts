@@ -7,7 +7,7 @@ export async function addMaintenance ({ request, response }: { request: any; res
     let status = 400;
 
     const maintenanceInfo:MaintenanceInterface = {
-      maintenanceName: body.userName,
+      maintenanceName: body.maintenanceName,
       type: body.type,
       deadline: body.deadline,
       priority: body.priority,
@@ -16,13 +16,9 @@ export async function addMaintenance ({ request, response }: { request: any; res
       deviceId: body.deviceId
     }
 
-  
-
       status = 200;
       response.body = await insert_maintenance(maintenanceInfo);
-
+      
       //response.body = { "error": "Invalid request!" };
-    
-
     response.status = status;
 }
