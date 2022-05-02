@@ -17,47 +17,67 @@ export async function addPeriodicTask ({ request, response }: { request: any; re
         description: body.description
     }
 
+/*
+//FOR TESTING ONLY
+    const periodicTaskInfo = {
+        periodtype: body.get('periodtype'), // hourly, daily, weekly, monthly
+        period: body.get('period') // which day/month e.g: 2 = February
+    }
+
+    const taskInfo = {
+        maintenanceId: body.get('maintenanceId'),
+        userId: body.get('userId'),
+        qualificationId: body.get('qualificationId'),
+        date: body.get('date'),
+        description: body.get('description')
+    }
+    */
     let status = 400;
+
     const hasValues = (
-        periodicTaskInfo.periodtype.length != 0 && 
-        periodicTaskInfo.period.toString().length != 0 &&
-        taskInfo.maintenanceId.toString().length != 0 &&
-        taskInfo.userId.toString().length != 0 && 
-        taskInfo.qualificationId.toString().length != 0 &&
-        taskInfo.date.length != 0
+        periodicTaskInfo.periodtype && 
+        periodicTaskInfo.period &&
+        taskInfo.maintenanceId &&
+        taskInfo.userId && 
+        taskInfo.qualificationId &&
+        taskInfo.date
     )
 
     if (hasValues) {
         switch (periodicTaskInfo.periodtype){
             case "minute" : {
                 everyMinute(async () => {
-                    response.body = await insert_task(taskInfo);
+                    insert_task(taskInfo);                    
                 });
+                response.body = "Cron has successfully created";
             }
             break;
             case "hourly" : {
                 hourly(async () => {
-                    response.body = await insert_task(taskInfo);
+                    insert_task(taskInfo);
                 });
+                response.body = "Cron has successfully created";
             }
             break;
             case "daily" : {
                 daily(async () => {
-                    response.body = await insert_task(taskInfo);
+                    insert_task(taskInfo);
                 });
+                response.body = "Cron has successfully created";
             }
             break;
             case "weekly" : {
                 weekly(async () => {
-                    response.body = await insert_task(taskInfo);
+                    insert_task(taskInfo);
                 },periodicTaskInfo.period);
+                response.body = "Cron has successfully created";
             }
             break;
             case "monthly" :{
                 monthly(async () => {
-                    response.body = await insert_task(taskInfo);
+                    insert_task(taskInfo);
                 },periodicTaskInfo.period);
-
+                response.body = "Cron has successfully created";
             }
             break;
             default : {
@@ -68,8 +88,9 @@ export async function addPeriodicTask ({ request, response }: { request: any; re
         status = 200;
         
     }else {
+        //stop(); //Stop all the scheduled job
         response.body = { "error": "Invalid request!" };
     }
-
+    
     response.status = status;
 }
