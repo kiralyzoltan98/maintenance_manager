@@ -66,7 +66,7 @@ export async function get_task_by_user_id(userid : number){
     return await mySqlClient.execute(`SELECT UserName, Qualification, Type, Date FROM Task, User, 
                                       Qualification WHERE User.UserId = Task.UserId AND 
                                       Qualification.QualificationId = User.QualificationId AND
-                                      User UserId = ?`, [
+                                      User.UserId = ?`, [
         userid
     ]);
 }
