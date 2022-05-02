@@ -136,7 +136,7 @@ export default {
             urlParam = `devicecategory`;
         }
         if(resource === "periodic-task"){
-            urlParam = `periodic-task`;
+            urlParam = `task`;
         }
         if(resource === "maintenances"){
             urlParam = `maintenance`;
