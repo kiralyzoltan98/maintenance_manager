@@ -23,6 +23,7 @@ import { addPeriodicTask } from '../controllers/addPeriodicTask.ts';
 import { updateDeviceCategories } from '../controllers/updateDeviceCategories.ts';
 import { getUsers } from '../controllers/getUsers.ts'
 import { addMaintenance } from '../controllers/addMaintenance.ts'
+import { updateMaintenances } from '../controllers/updateMaintenances.ts'
 
 const router = new Router();
 
@@ -50,6 +51,7 @@ router
     .get("/maintenances", getAllMaintenances)
 
     .put("/devicecategories", updateDeviceCategories)
+    .put("/maintenances", updateMaintenances)
 
     .delete("/user", deleteUserById)
     

@@ -101,6 +101,11 @@ export const update_qualification_in_user = async ({ qualificationId, userId }: 
     ]);
 }
 
+export const update_maintenance = async ({ maintenanceId, maintenanceName, type, deadline, priority, status, ignoreMessage, deviceId }: MaintenanceInterface) => {
+    return await mySqlClient.execute(`UPDATE Maintenance SET type = ?, deadline = ?, priority = ? , status = ?, ignoreMessage = ?, deviceId = ?, maintenanceName = ? WHERE maintenanceId = ?`, [
+        type, deadline, priority, status, ignoreMessage, deviceId, maintenanceName, maintenanceId
+    ]);
+}
 
 export const insert_category = async ({  mainCategoryId, subCategoryId }: { mainCategoryId: number, subCategoryId: number }) => {
     return await mySqlClient.execute(`INSERT INTO Category(mainCategoryId, subCategoryId) VALUES(?,?)`, [
