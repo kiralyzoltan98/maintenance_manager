@@ -19,6 +19,7 @@ export const MaintanenceList = props => (
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="maintenanceName" />
+            <TextField source="status" />
         </Datagrid>
 
     </List>
