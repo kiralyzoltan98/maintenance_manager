@@ -16,77 +16,59 @@ const dbIdMap = {
     maintenances: "maintenanceId",
 };
 
+/**
+ *
+ * @param response the response from the api in json format
+ * @returns @object result a javascript object containing the new response, and the number of rows affected
+ */
+function parseID(response, resource){
+    let result = {};
+    let key = dbIdMap[resource];
+
+    response.forEach(element => {
+        if (element[key]){
+            element["id"] = element[key];
+        }
+        result["count"] = element["id"];
+        delete element[key];
+    });
+    result["rows"] = response;
+    console.log("Result, KEY: ", result, key);
+    return result;
+}
+
 export default {
 
     getList: (resource, params) => {
 
         let url = `${apiUrl}/${resource}`;
-
-        console.log(dbIdMap[resource]);
-
-        /**
-         *
-         * @param response the response from the api in json format
-         * @returns @object result a javascript object containing the new response, and the number of rows affected
-         */
-
-        function parseID(response){
-            let result = {};
-
-            let key = dbIdMap[resource];
-
-            //console.log("KEY: ", dbIdMap[resource]);
-
-            response.forEach(element => {
-                if (element[key]){
-                    element["id"] = element[key];
-                }
-                result["count"] = element["id"];
-                delete element[key];
-            });
-            result["rows"] = response;
-            console.log("Result, KEY: ", result, key);
-            return result;
-        }
-        
         return httpClient(url).then(({ headers, json, status }) => ({
-            data: parseID(json)["rows"],
-            total: parseID(json)["count"],
+            data: parseID(json, resource)["rows"],
+            total: parseID(json, resource)["count"],
         }));
     },
 
-    getOne: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
-            data: json,
-        })),
+    getOne: (resource, params) => {
+        console.log("Get One params: ", params);
+        httpClient(`${apiUrl}/${resource}/${params.id}`).then(({json}) => ({
+            data: parseID(json, resource)["rows"],
+        }));
+    },
 
     getMany: (resource, params) => {
-        function parseID(response){
-            let result = {};
-
-            let key = dbIdMap[resource];
-
-            //console.log("KEY: ", dbIdMap[resource]);
-
-            response.forEach(element => {
-                if (element[key]){
-                    element["id"] = element[key];
-                }
-                result["count"] = element["id"];
-                delete element[key];
-            });
-            result["rows"] = response;
-            //console.log("Result, KEY: ", result, key);
-            return result;
-        }
+        console.log("Get Many params: ", params);
+        return;
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        return httpClient(url).then(({ json }) => ({ data: parseID(json)["rows"] }));
+        return httpClient(url).then(({ json }) => ({
+            data: parseID(json, resource)["rows"],
+        }));
     },
 
     getManyReference: (resource, params) => {
+        console.log("Get Many Reference params: ", params);
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
@@ -106,7 +88,7 @@ export default {
     },
 
     update: (resource, params) => {
-        console.log("Update many params: ", params);
+        console.log("Update params: ", params);
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
@@ -126,7 +108,7 @@ export default {
     },
 
     create: async (resource, params) => {
-
+        console.log("Create params: ", params);
         let urlParam = resource === "devices" ? "device" : "user";
 
         if (resource === "qualifications") {

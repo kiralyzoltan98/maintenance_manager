@@ -18,7 +18,10 @@ import { ShowButton } from 'react-admin';
 export const TaskList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
+            {/* <TextField source="id" /> */}
+            <ReferenceField label="Maintenance Name" source="id" reference="maintenances">
+                <TextField source="maintenanceName" />
+            </ReferenceField>
             <TextField source="userName" />
             <TextField source="qualification" />
             <TextField source="type" />
@@ -48,7 +51,7 @@ export const TaskCreate = props => (
         </SimpleForm>
     </Create>
 );
-/*
+
 export const TaskShow = props => (
     <Show {...props}>
         <SimpleShowLayout>
@@ -67,4 +70,4 @@ export const TaskShow = props => (
             <TextField source="period" />
         </SimpleShowLayout>
     </Show>
-); */
+);
