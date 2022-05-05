@@ -41,7 +41,7 @@ router
     .post("/maintenance", addMaintenance)
 
     .get("/devices", getAllDevice)
-    //.get("/userids", getAllUsers)
+    //.get("/userids", getAllUsers) 
     .get("/users", getUsers)
     .get("/qualifications", getAllQualifications)
     .get("/devicecategories", getAllDeviceCategories)
