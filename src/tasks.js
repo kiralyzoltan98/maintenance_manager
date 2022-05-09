@@ -15,8 +15,15 @@ import {
 } from 'react-admin';
 import { ShowButton } from 'react-admin';
 
+const taskFilters = [
+    <TextInput source="q" label="Search" alwaysOn />,
+    <ReferenceInput source="userId" reference="users">
+        <SelectInput optionText="username" />
+    </ReferenceInput>,
+];
+
 export const TaskList = props => (
-    <List {...props}>
+    <List {...props} filters={taskFilters}>
         <Datagrid rowClick="edit">
             {/* <TextField source="id" /> */}
             <ReferenceField label="Maintenance Name" source="id" reference="maintenances">

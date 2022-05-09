@@ -45,6 +45,12 @@ export default {
     getList: (resource, params) => {
 
         let url = `${apiUrl}/${resource}`;
+        let filter;
+        if (document.getElementsByName("userId")[0]){
+            filter = document.getElementsByName("userId")[0].value;
+        }
+        url += (filter) ? ("/" + filter ): "";
+        console.log(url);
         return httpClient(url).then(({ headers, json, status }) => ({
             data: parseID(json, resource)["rows"],
             total: parseID(json, resource)["count"],
