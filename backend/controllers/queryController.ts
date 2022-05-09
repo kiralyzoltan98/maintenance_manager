@@ -55,17 +55,22 @@ export async function get_all_maintenances() {
 }
 
 export async function get_all_tasks() { 
-    return await mySqlClient.execute(`SELECT Task.maintenanceId, User.userName, Qualification.qualification, Maintenance.type, Task.date, Maintenance.status
-    FROM Task, User, Qualification, Maintenance
+    return await mySqlClient.execute(`SELECT Task.maintenanceId, User.userName, Qualification.qualification, Maintenance.type, Task.date, Maintenance.status, DeviceCategory.Description
+    FROM Task, User, Qualification, Maintenance, DeviceCategory, Device
     WHERE User.userId = Task.userId AND
     Qualification.qualificationId = User.qualificationId AND
+    Device.categoryId = DeviceCategory.deviceCategoryId AND
+    DeviceCategory.deviceCategoryId = Device.DeviceId AND
     Task.maintenanceId = Maintenance.maintenanceId`);
 }
 
 export async function get_task_by_user_id(userid : number){
-    return await mySqlClient.execute(`SELECT UserName, Qualification, Task.Type, Date FROM Task, User, 
-                                      Qualification WHERE User.UserId = Task.UserId AND 
+    return await mySqlClient.execute(`SELECT Task.maintenanceId, UserName, Qualification, Task.Type, Date, DeviceCategory.Description
+                                      FROM Task, User, Qualification, DeviceCategory, Device
+                                      WHERE User.UserId = Task.UserId AND 
                                       Qualification.QualificationId = User.QualificationId AND
+                                      Device.categoryId = DeviceCategory.deviceCategoryId AND
+                                      DeviceCategory.deviceCategoryId = Device.DeviceId AND
                                       User.UserId = ?`, [
         userid
     ]);
