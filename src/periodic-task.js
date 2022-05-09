@@ -5,8 +5,9 @@ export const PeriodicList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="username" />
-            <TextField source="qualification" />
+            <TextField source="userId" />
+            <TextField source="qualificationId" />
+            <TextField source="date" />
             <TextField source="type" />
         </Datagrid>
     </List>

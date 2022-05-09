@@ -24,6 +24,9 @@ const dbIdMap = {
 function parseID(response, resource){
     let result = {};
     let key = dbIdMap[resource];
+    if(resource === "periodic-task"){
+        key = "maintenanceId";
+    }
 
     response.forEach(element => {
         if (element[key]){
