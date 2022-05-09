@@ -16,12 +16,12 @@ import {
 
 export const MaintanenceList = props => (
     <List {...props}>
-        <Datagrid rowClick="edit">
+        <Datagrid>
             <TextField source="id" />
             <TextField source="maintenanceName" />
             <TextField source="status" />
+            <EditButton />
         </Datagrid>
-
     </List>
 );
 
@@ -39,4 +39,19 @@ export const MaintanenceCreate = props => (
             <TextInput source="ignoreMessage" />            
         </SimpleForm>
     </Create>
+);
+export const MaintanenceEdit = props => (
+    <Edit {...props}>
+        <SimpleForm>
+            <ReferenceInput source="deviceId" reference="devices">
+                <SelectInput optionText="deviceName" />
+            </ReferenceInput>
+            <TextInput source="type" />
+            <DateInput source="deadline" />
+            <TextInput source="priority" />
+            <TextInput source="status" />
+            <TextInput source="maintenanceName" />
+            <TextInput source="ignoreMessage" />
+        </SimpleForm>
+    </Edit>
 );
