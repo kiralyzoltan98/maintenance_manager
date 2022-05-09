@@ -14,7 +14,8 @@ export async function addTask ({ request, response }: { request: any; response: 
       userId: body.userId,
       qualificationId: body.qualificationId,
       date: body.date,
-      description: body.description
+      description: body.description,
+      type: body.period ? "periodic" : "normal",
     }
 
     let status = 400;

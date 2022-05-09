@@ -71,6 +71,11 @@ export async function get_task_by_user_id(userid : number){
     ]);
 }
 
+
+export async function get_all_periodic_tasks() {
+    return await mySqlClient.execute(`SELECT * FROM Task WHERE Task.type = 'periodic'`);
+}
+
 export const insert_user = async ({ userName, password, qualificationId, type }: { userName: string; password: string, qualificationId: number, type: string }) => {
     return await mySqlClient.execute(`INSERT INTO User(UserName, Password, QualificationId, Type) VALUES(?,?,?,?)`, [
         userName, password, qualificationId, type
@@ -133,9 +138,9 @@ export const insert_maintenance = async ({ maintenanceName, type, deadline, prio
     ]);
 }
 
-export const insert_task = async ({  maintenanceId, userId, qualificationId, date, description }: {maintenanceId: number, userId: number, qualificationId: number, date: string, description : string }) => {
-    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date, Description) VALUES(?,?,?,?,?)`, [
-        maintenanceId, userId, qualificationId, date, description
+export const insert_task = async ({  maintenanceId, userId, qualificationId, date, description, type }: {maintenanceId: number, userId: number, qualificationId: number, date: string, description : string, type : string }) => {
+    return await mySqlClient.execute(`INSERT INTO Task(MaintenanceId, UserId, QualificationId, Date, Description, type ) VALUES(?,?,?,?,?, ?)`, [
+        maintenanceId, userId, qualificationId, date, description, type
     ]);
 }
 

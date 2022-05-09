@@ -14,7 +14,8 @@ export async function addPeriodicTask ({ request, response }: { request: any; re
         userId: body.userId,
         qualificationId: body.qualificationId,
         date: body.date,
-        description: body.description
+        description: body.description,
+        type: body.period ? "periodic" : "normal",
     }
     
 
