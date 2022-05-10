@@ -32,6 +32,12 @@ export async function get_all_users() {
                                      WHERE Qualification.qualificationId = User.qualificationId`);
 }
 
+export async function get_users_by_id(params: number) {
+    return {
+        userId: 0,
+    }
+}
+
 export async function return_devices() { 
         return await mySqlClient.execute(`SELECT Device.deviceId, DeviceCategory.deviceCategoryName, Device.deviceName, Device.location 
         FROM Device, DeviceCategory

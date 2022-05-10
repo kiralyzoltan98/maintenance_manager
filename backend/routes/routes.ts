@@ -25,6 +25,7 @@ import { getUsers } from '../controllers/getUsers.ts';
 import { addMaintenance } from '../controllers/addMaintenance.ts';
 import { updateMaintenances } from '../controllers/updateMaintenances.ts';
 import { getPeriodicTasks } from '../controllers/getPeriodicTasks.ts';
+import { getUsersById } from '../controllers/getUsersById.ts';
 
 const router = new Router();
 
@@ -44,6 +45,7 @@ router
     .get("/devices", getAllDevice)
     //.get("/userids", getAllUsers) 
     .get("/users", getUsers)
+    .get("/users/:userId", getUsersById)
     .get("/qualifications", getAllQualifications)
     .get("/devicecategories", getAllDeviceCategories)
     .get("/tasks", getAllTasks)
