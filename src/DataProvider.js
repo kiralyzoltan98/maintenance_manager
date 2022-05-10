@@ -67,6 +67,7 @@ export default {
 
     getMany: (resource, params) => {
         console.log("Get Many params: ", params);
+        console.log("Get Many resource: ", resource);
         return;
         const query = {
             filter: JSON.stringify({ id: params.ids }),
