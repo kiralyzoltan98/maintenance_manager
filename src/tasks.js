@@ -30,6 +30,7 @@ export const TaskList = props => (
             </ReferenceField>
             <TextField source="userName" />
             <TextField source="qualification" />
+            <TextField source="Description" />
             <TextField source="type" />
             <DateField source="date" />
             <ShowButton label="SHOW" />
