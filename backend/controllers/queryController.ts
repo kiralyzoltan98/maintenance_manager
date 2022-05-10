@@ -71,7 +71,7 @@ export async function get_all_tasks() {
 }
 
 export async function get_task_by_user_id(userid : number){
-    return await mySqlClient.execute(`SELECT Task.maintenanceId as 'maintenanceId', UserName as 'userName', Qualification, Task.Type, Date, DeviceCategory.Description
+    return await mySqlClient.execute(`SELECT Task.maintenanceId, UserName, Qualification, Task.Type, Date, DeviceCategory.Description
                                       FROM Task, User, Qualification, DeviceCategory, Device
                                       WHERE User.UserId = Task.UserId AND 
                                       Qualification.QualificationId = User.QualificationId AND
