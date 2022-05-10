@@ -48,7 +48,6 @@ export default {
         let filter;
         if (document.getElementsByName("userId")[0]){
             filter = document.getElementsByName("userId")[0].value;
-
         }
         url += (filter) ? ("/" + filter ): "";
         console.log(url);
@@ -61,12 +60,6 @@ export default {
     getOne: (resource, params) => {
         console.log("Get One params: ", params);
         let url = `${apiUrl}/${resource}`;
-        let filter;
-        if (document.getElementsByName("userId")[0]){
-            filter = document.getElementsByName("userId")[0].value;
-
-        }
-        url += (filter) ? ("/" + filter ): "";
         httpClient(url).then(({json}) => ({
             data: parseID(json, resource)["rows"],
         }));
@@ -75,10 +68,16 @@ export default {
     getMany: (resource, params) => {
         console.log("Get Many params: ", params);
         console.log("Get Many resource: ", resource);
+        let url = `${apiUrl}/${resource}`;
+        let filter;
+        if (document.getElementsByName("userId")[0]){
+            filter = document.getElementsByName("userId")[0].value;
+
+        }
+        url += (filter) ? ("/" + filter ): "";
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
         return httpClient(url).then(({ json }) => ({
             data: parseID(json, resource)["rows"],
         }));

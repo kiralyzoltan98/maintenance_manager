@@ -16,7 +16,6 @@ import {
 import { ShowButton } from 'react-admin';
 
 const taskFilters = [
-    <TextInput source="q" label="Search" alwaysOn />,
     <ReferenceInput source="userId" reference="users">
         <SelectInput optionText="username" />
     </ReferenceInput>,
