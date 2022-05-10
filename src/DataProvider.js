@@ -60,14 +60,21 @@ export default {
 
     getOne: (resource, params) => {
         console.log("Get One params: ", params);
-        httpClient(`${apiUrl}/${resource}/${params.id}`).then(({json}) => ({
+        let url = `${apiUrl}/${resource}`;
+        let filter;
+        if (document.getElementsByName("userId")[0]){
+            filter = document.getElementsByName("userId")[0].value;
+
+        }
+        url += (filter) ? ("/" + filter ): "";
+        httpClient(url).then(({json}) => ({
             data: parseID(json, resource)["rows"],
         }));
     },
 
     getMany: (resource, params) => {
         console.log("Get Many params: ", params);
-        return;
+        console.log("Get Many resource: ", resource);
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
