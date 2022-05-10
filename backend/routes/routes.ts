@@ -26,6 +26,7 @@ import { addMaintenance } from '../controllers/addMaintenance.ts';
 import { updateMaintenances } from '../controllers/updateMaintenances.ts';
 import { getPeriodicTasks } from '../controllers/getPeriodicTasks.ts';
 import { getUsersById } from '../controllers/getUsersById.ts';
+import { getMaintenanceById } from '../controllers/getMaintenanceById.ts';
 
 const router = new Router();
 
@@ -52,6 +53,7 @@ router
     .get("/tasks/:userId", getTaskByUserId)
     .get("/categories", getAllCategories)
     .get("/maintenances", getAllMaintenances)
+    .get("/maintenances/:userId", getMaintenanceById)
     .get("/periodic-task", getPeriodicTasks)
 
     .put("/devicecategories", updateDeviceCategories)
